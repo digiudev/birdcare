@@ -47,6 +47,8 @@
 							<div class="col-md-6">
 								<input type="password" class="form-control" name="password_confirmation">
 							</div>
+
+
 						</div>
 
 						<div class="form-group">

@@ -42,7 +42,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Birds Beta</div>
+                <div class="title">Bird Care - Beta Version</div>
                 <div class="linkLogin"> <br /><br /><a href="/login?from=home">Login</a>
                     <br /><br /><a href="/register?from=home">Registrati</a></div>
             </div>

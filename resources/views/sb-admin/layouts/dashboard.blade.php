@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url ('') }}">SB Admin v2.0 | Laravel 5</a>
+                <a class="navbar-brand" href="{{ url ('') }}">Bird Care - Beta Version | Dashboard User</a>
             </div>
             <!-- /.navbar-header -->
 

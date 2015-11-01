@@ -8,7 +8,9 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "5.1.*",
-        "bestmomo/scafold": "dev-master"
+        "bestmomo/scafold": "dev-master",
+        "barryvdh/laravel-ide-helper": "2.0-dev",
+        "guzzlehttp/guzzle": "~5.3|~6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

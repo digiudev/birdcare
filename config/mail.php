@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.google.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'andrea.digiuliantonio@gmail.com', 'name' => 'Andrea'],
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME', 'andrea.digiuliantonio@gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -90,10 +90,13 @@ return [
     | Here you may set the password required by your SMTP server to send out
     | messages from your application. This will be given to the server on
     | connection so that the application will be able to send messages.
+
+    Per google attivare l'accesso per app meno sicure altrimenti da errore di
+    autenticazione user e password
     |
     */
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD','ChV1Jb8D'),
 
     /*
     |--------------------------------------------------------------------------

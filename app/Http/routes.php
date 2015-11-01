@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+	mail('andrea.digiuliantonio@gmail.com', 'oggetto', 'ciao');
     return view('welcome');
 });
 

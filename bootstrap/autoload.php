@@ -5,7 +5,8 @@ define('SBADMIN',  '../resources/views/sb-admin/');
 define('ADMIN_PATH',  '/admin');
 define('VIEW_PATH',  '../resources/views/');
 define('URL_SITO',  'http://birdbeta.it');
-
+/*define('MAIL_USERNAME',  'andrea.digiuliantonio@gmail.com');
+define('MAIL_PASSWORD',  'ChV1Jb8D');*/
 
 /*
 |--------------------------------------------------------------------------

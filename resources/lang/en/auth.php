@@ -15,5 +15,10 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'lbl_email' => 'E-mail Address',
+    'lbl_name' => 'Name',
+    'lbl_pwd' => 'Password',
+    'lbl_remember_me' => 'Remember me',
+    'lbl_forgot_pwd' => 'Forgot Your Password?',
+    'lbl_login' => 'Login',
 ];

@@ -147,6 +147,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 	    Bestmomo\Scafold\ScafoldServiceProvider::class,
 
+        // Localization
+        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
     ],
 
     /*
@@ -197,6 +199,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
+        'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
     ],
 
 ];

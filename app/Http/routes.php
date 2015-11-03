@@ -11,19 +11,38 @@
 |
 */
 
-Route::get('/', function () {
-	mail('andrea.digiuliantonio@gmail.com', 'oggetto', 'ciao');
-    return view('welcome');
-});
+Route::group(
+	[
+		'prefix' => LaravelLocalization::setLocale(),
+		'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+	],
+	function()
+	{
+	Route::get('/', function () {
+		return view('welcome');
+	});
 
-Route::get('/login', function () {
-	return view('auth.login');
-});
+	Route::get('/login', function () {
+		return view('auth.login');
+	});
 
-Route::get('/register', function () {
-	return view('auth.register');
-});
+	Route::get('/register', function () {
+		return view('auth.register');
+	});
 
+		Route::get('auth/login', [
+			'as' => 'profile', 'uses' => 'UserController@showProfile'
+		]);
+
+// Authentication routes...
+		Route::get('auth/login', 'Auth\AuthController@getLogin');
+		Route::post('auth/login', 'Auth\AuthController@postLogin');
+		Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+		Route::get('auth/register', 'Auth\AuthController@getRegister');
+		Route::post('auth/register', 'Auth\AuthController@postRegister');
+});
 
 Route::get('/admin', function () {
 	return view('sb-admin.home');
@@ -90,16 +109,3 @@ Route::get('admin/documentation', function()
 {
 	return View::make('sb-admin.documentation');
 });
-
-Route::get('auth/login', [
-	'as' => 'profile', 'uses' => 'UserController@showProfile'
-]);
-
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
-
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');

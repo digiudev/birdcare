@@ -28,7 +28,8 @@
         "App\\Providers\\AuthServiceProvider",
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
-        "Bestmomo\\Scafold\\ScafoldServiceProvider"
+        "Bestmomo\\Scafold\\ScafoldServiceProvider",
+        "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -46,7 +47,8 @@
         "App\\Providers\\AuthServiceProvider",
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
-        "Bestmomo\\Scafold\\ScafoldServiceProvider"
+        "Bestmomo\\Scafold\\ScafoldServiceProvider",
+        "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

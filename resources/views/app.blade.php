@@ -37,6 +37,15 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
+					<ul class="language_bar_chooser">
+						@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+							<li>
+								<a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+									{{{ $properties['native'] }}}
+								</a>
+							</li>
+						@endforeach
+					</ul>
 					@if(auth()->guest())
 						@if(!Request::is('auth/login'))
 							<li><a href="{{ url('/auth/login') }}">Login</a></li>

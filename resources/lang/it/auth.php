@@ -12,10 +12,13 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'title_login' => 'Accedi',
+    'failed' => 'Nome utente o password non corretti',
+    'throttle' => 'Troppi tentativi di login effettuati. Per favore, prova tra :seconds secondi.',
     'lbl_email' => 'E-mail',
     'lbl_name' => 'Nome',
     'lbl_pwd' => 'Password',
+    'lbl_remember_me' => 'Ricordati di me',
+    'lbl_forgot_pwd' => 'Non ricordi la tua password?',
+    'lbl_login' => 'Accedi',
 ];

@@ -28,37 +28,35 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
+				<!--<a class="navbar-brand" href="#">Laravel</a>-->
 			</div>
 
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav">
-					<li><a href="<?php echo e(url('/')); ?>">Welcome</a></li>
+					<li><a href="<?php echo e(url('/')); ?>"><?php echo e(trans('pagination.title_welcome')); ?></a></li>
 				</ul>
-
 				<ul class="nav navbar-nav navbar-right">
-					<ul class="language_bar_chooser">
-						<?php foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties): ?>
-							<li>
-								<a rel="alternate" hreflang="<?php echo e($localeCode); ?>" href="<?php echo e(LaravelLocalization::getLocalizedURL($localeCode)); ?>">
-									<?php echo e($properties['native']); ?>
-
-								</a>
-							</li>
-						<?php endforeach; ?>
-					</ul>
+					<?php foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties): ?>
+						<li>
+							<a rel="alternate" hreflang="<?php echo e($localeCode); ?>" href="<?php echo e(LaravelLocalization::getLocalizedURL($localeCode)); ?>">
+								<img src="/resources/views/images/flags/<?php echo e($properties['native']); ?>_24.png" height=""/>
+							</a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
 					<?php if(auth()->guest()): ?>
-						<?php if(!Request::is('auth/login')): ?>
-							<li><a href="<?php echo e(url('/auth/login')); ?>">Login</a></li>
+						<?php if(!Request::is(App::getLocale().'/auth/login')): ?>
+							<li><a href="<?php echo e(url('/'.App::getLocale().'/auth/login')); ?>"><?php echo e(trans('auth.title_login')); ?></a></li>
 						<?php endif; ?>
-						<?php if(!Request::is('auth/register')): ?>
-							<li><a href="<?php echo e(url('/auth/register')); ?>">Register</a></li>
+						<?php if(!Request::is(App::getLocale().'/auth/register')): ?>
+							<li><a href="<?php echo e(url('/'.App::getLocale().'/auth/register')); ?>"><?php echo e(trans('auth.title_register')); ?></a></li>
 						<?php endif; ?>
 					<?php else: ?>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo e(auth()->user()->name); ?> <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="<?php echo e(url('/auth/logout')); ?>">Logout</a></li>
+								<li><a href="<?php echo e(url('/auth/logout')); ?>"><?php echo e(trans('auth.lbl_logout')); ?></a></li>
 							</ul>
 						</li>
 					<?php endif; ?>

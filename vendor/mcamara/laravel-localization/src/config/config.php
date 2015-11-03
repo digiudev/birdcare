@@ -79,7 +79,7 @@ return [
 		//'nr'          => ['name' => 'South Ndebele',          'script' => 'Latn', 'native' => 'isiNdebele'],
 		//'xh'          => ['name' => 'Xhosa',                  'script' => 'Latn', 'native' => 'isiXhosa'],
 		//'zu'          => ['name' => 'Zulu',                   'script' => 'Latn', 'native' => 'isiZulu'],
-		'it'          => ['name' => 'Italian',                'script' => 'Latn', 'native' => 'italiano'],
+		'it'          => ['name' => 'Italian',                'script' => 'Latn', 'native' => 'Italiano'],
 		//'ik'          => ['name' => 'Inupiaq',                'script' => 'Latn', 'native' => 'Iñupiaq'],
 		//'dyo'         => ['name' => 'Jola-Fonyi',             'script' => 'Latn', 'native' => 'joola'],
 		//'kea'         => ['name' => 'Kabuverdianu',           'script' => 'Latn', 'native' => 'kabuverdianu'],

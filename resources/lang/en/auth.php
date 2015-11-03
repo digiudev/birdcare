@@ -25,4 +25,5 @@ return [
     'lbl_login' => 'Login',
     'lbl_confirm_pwd' => 'Confirm Password',
     'lbl_register' => 'Register',
+    'lbl_logout' => 'Logout',
 ];

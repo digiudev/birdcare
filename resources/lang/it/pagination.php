@@ -15,5 +15,6 @@ return [
 
     'previous' => '&laquo; Prec.',
     'next'     => 'Pros. &raquo;',
+    'title_welcome' => 'Vai al sito',
 
 ];

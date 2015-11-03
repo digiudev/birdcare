@@ -13,6 +13,7 @@ return [
     |
     */
     'title_login' => 'Accedi',
+    'title_register' => 'Registrati',
     'failed' => 'Nome utente o password non corretti',
     'throttle' => 'Troppi tentativi di login effettuati. Per favore, prova tra :seconds secondi.',
     'lbl_email' => 'E-mail',
@@ -21,4 +22,6 @@ return [
     'lbl_remember_me' => 'Ricordati di me',
     'lbl_forgot_pwd' => 'Non ricordi la tua password?',
     'lbl_login' => 'Accedi',
+    'lbl_confirm_pwd' => 'Conferma Password',
+    'lbl_register' => 'Registrati',
 ];

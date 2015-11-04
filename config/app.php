@@ -149,6 +149,9 @@ return [
 
         // Localization
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+
+        // Socialize
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -200,6 +203,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

@@ -35,4 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '533226373508262',
+        'client_secret' => '7d82c720bd3777941025ed647d896af0',
+        'redirect' => 'http://birdbeta.it/auth/facebook/callback',
+    ],
 ];

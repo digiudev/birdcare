@@ -42,11 +42,14 @@ Route::group(
 // Registration routes...
 		Route::get('auth/register', 'Auth\AuthController@getRegister');
 		Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+		Route::get('auth/facebook', 'Auth\AuthController@redirectToProviderFB');
+		Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallbackFB');
 });
 
-Route::get('/admin', function () {
+Route::get('/admin', ['as' => 'admin', 'uses' => function () {
 	return view('sb-admin.home');
-});
+}]);
 
 Route::get('admin/charts', function()
 {

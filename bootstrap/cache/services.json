@@ -29,7 +29,8 @@
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
         "Bestmomo\\Scafold\\ScafoldServiceProvider",
-        "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider"
+        "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
+        "Laravel\\Socialite\\SocialiteServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -138,7 +139,8 @@
         "html": "Collective\\Html\\HtmlServiceProvider",
         "form": "Collective\\Html\\HtmlServiceProvider",
         "Collective\\Html\\HtmlBuilder": "Collective\\Html\\HtmlServiceProvider",
-        "Collective\\Html\\FormBuilder": "Collective\\Html\\HtmlServiceProvider"
+        "Collective\\Html\\FormBuilder": "Collective\\Html\\HtmlServiceProvider",
+        "Laravel\\Socialite\\Contracts\\Factory": "Laravel\\Socialite\\SocialiteServiceProvider"
     },
     "when": {
         "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider": [],
@@ -153,6 +155,7 @@
         "Illuminate\\Redis\\RedisServiceProvider": [],
         "Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider": [],
         "Illuminate\\Translation\\TranslationServiceProvider": [],
-        "Collective\\Html\\HtmlServiceProvider": []
+        "Collective\\Html\\HtmlServiceProvider": [],
+        "Laravel\\Socialite\\SocialiteServiceProvider": []
     }
 }

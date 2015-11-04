@@ -45,6 +45,12 @@ Route::group(
 
 		Route::get('auth/facebook', 'Auth\AuthController@redirectToProviderFB');
 		Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallbackFB');
+
+		Route::get('auth/twitter', 'Auth\AuthController@redirectToProviderTW');
+		Route::get('auth/twitter/callback', 'Auth\AuthController@handleProviderCallbackTW');
+
+		Route::get('auth/google', 'Auth\AuthController@redirectToProviderG');
+		Route::get('auth/google/callback', 'Auth\AuthController@handleProviderCallbackG');
 });
 
 Route::get('/admin', ['as' => 'admin', 'uses' => function () {

@@ -40,4 +40,16 @@ return [
         'client_secret' => '7d82c720bd3777941025ed647d896af0',
         'redirect' => 'http://birdbeta.it/auth/facebook/callback',
     ],
+
+    'twitter' => [
+        'client_id' => 'dnGPCDPcY7NgpdxY1KgVzOysK',
+        'client_secret' => 'VQLrjPbmuSpXqaAG2mV2CFad9Npv2fsXcKwJM5zcRY1nEKdaEy',
+        'redirect' => 'http://birdbeta.it/auth/twitter/callback',
+    ],
+
+    'google' => [
+        'client_id' => '515252813145-ki6gjd0icolvgbhvtp5afkc188qsc53o.apps.googleusercontent.com',
+        'client_secret' => '_Y7OaYhyTGTHyCXr_UaO06pM',
+        'redirect' => 'http://birdbeta.it/auth/google/callback',
+    ],
 ];

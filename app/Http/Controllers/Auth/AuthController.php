@@ -77,6 +77,26 @@ class AuthController extends Controller
     }
 
     /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProviderTW()
+    {
+        return Socialite::driver('twitter')->redirect();
+    }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProviderG()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
      * Obtain the user information from GitHub.
      *
      * @return Response
@@ -89,13 +109,51 @@ class AuthController extends Controller
             return redirect('auth/facebook');
         }
 
-        $authUser = $this->findOrCreateUser($user);
+        $authUser = $this->findOrCreateUser($user, 'facebook');
 
         Auth::login($authUser, true);
 
         return redirect()->route('admin');
+    }
 
-        // $user->token;
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleProviderCallbackTW()
+    {
+        try {
+            $user = Socialite::driver('twitter')->user();
+        } catch (Exception $e) {
+            return redirect('auth/twitter');
+        }
+
+        $authUser = $this->findOrCreateUser($user, 'twitter');
+
+        Auth::login($authUser, true);
+
+        return redirect()->route('admin');
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleProviderCallbackG()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (Exception $e) {
+            return redirect('auth/google');
+        }
+
+        $authUser = $this->findOrCreateUser($user, 'google');
+
+        Auth::login($authUser, true);
+
+        return redirect()->route('admin');
     }
 
     /**
@@ -104,19 +162,46 @@ class AuthController extends Controller
      * @param $facebookUser
      * @return User
      */
-    private function findOrCreateUser($facebookUser)
+    private function findOrCreateUser($socialUser, $socialName)
     {
-        $authUser = User::where('facebook_id', $facebookUser->id)->first();
+        if($socialName== 'facebook')
+            $authUser = User::where('facebook_id', $socialUser->id)->first();
+        if($socialName== 'twitter')
+            $authUser = User::where('twitter_id', $socialUser->id)->first();
+        if($socialName== 'google')
+            $authUser = User::where('google_id', $socialUser->id)->first();
 
         if ($authUser){
             return $authUser;
         }
 
-        return User::create([
-            'name' => $facebookUser->name,
-            'email' => $facebookUser->email,
-            'facebook_id' => $facebookUser->id,
-            'avatar' => $facebookUser->avatar
-        ]);
+        if($socialName== 'facebook') {
+            return User::create([
+                'name' => $socialUser->name,
+                'email' => $socialUser->email,
+                'facebook_id' => $socialUser->id,
+                'avatar' => $socialUser->avatar
+            ]);
+        }
+
+        // Non abbiamo il nome utente dell'utente
+        elseif($socialName== 'twitter')
+        {
+            return User::create([
+                'name' => $socialUser->name,
+                'handle' => $socialUser->nickname,
+                'twitter_id' => $socialUser->id,
+                'avatar' => $socialUser->avatar_original
+            ]);
+        }
+
+        elseif($socialName== 'google') {
+            return User::create([
+                'name' => $socialUser->name,
+                'email' => $socialUser->email,
+                'google_id' => $socialUser->id,
+                'avatar' => $socialUser->avatar
+            ]);
+        }
     }
 }

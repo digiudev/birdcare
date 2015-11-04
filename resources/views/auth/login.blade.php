@@ -33,7 +33,11 @@
 							<div class="col-md-6">
 								<input type="password" class="form-control" name="password">
 								<br />
-								<a href="auth/facebook" role="button">Login with Facebook</a>
+								<a href="/auth/facebook" role="button">Login with Facebook</a>
+								<br />
+								<a href="/auth/twitter" role="button">Login with Twitter</a>
+								<br />
+								<a href="/auth/google" role="button">Login with Google</a>
 							</div>
 						</div>
 

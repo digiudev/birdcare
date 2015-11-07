@@ -43,8 +43,12 @@
         <div class="container">
             <div class="content">
                 <div class="title">Bird Care - Beta Version</div>
+                @if(auth()->guest())
                 <div class="linkLogin"> <br /><br /><a href="/login?from=home">Login</a>
                     <br /><br /><a href="/register?from=home">Registrati</a></div>
+                @else
+                    <div class="linkLogin"> <br /><br /><a href="/admin">Area privata</a>
+                @endif
             </div>
         </div>
     </body>

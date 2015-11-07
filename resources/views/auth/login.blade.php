@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+<link href="{{VIEW_PATH}}css/social.css" rel="stylesheet">
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -32,14 +33,21 @@
 							<label class="col-md-4 control-label">{{ trans('auth.lbl_pwd') }}</label>
 							<div class="col-md-6">
 								<input type="password" class="form-control" name="password">
-								<br />
-								<a href="/auth/facebook" role="button">Login with Facebook</a>
-								<br />
-								<a href="/auth/twitter" role="button">Login with Twitter</a>
-								<br />
-								<a href="/auth/google" role="button">Login with Google</a>
 							</div>
 						</div>
+						<div class="form-group">
+							<div class="col-md-6 col-md-offset-4">
+									<div class="row">
+										<div class="spanfb"><a href="/auth/facebook" role="button"><img src="{{VIEW_PATH}}images/facebook.png" alt="{{ trans('auth.lbl_loginfb') }}"/><i>{{ trans('auth.lbl_loginfb') }}</i><div class="clear"></div></a></div>
+									</div>
+									<div class="row">
+										<div class="spantw"><a href="/auth/twitter" role="button"><img src="{{VIEW_PATH}}images/twitter.png" alt="{{ trans('auth.lbl_logintw') }}"/><i>{{ trans('auth.lbl_logintw') }}</i><div class="clear"></div></a></div>
+									</div>
+									<div class="row">
+										<div class="spangp"><a href="/auth/google" role="button"><img src="{{VIEW_PATH}}images/gplus.png" alt="{{ trans('auth.lbl_logingp') }}"/><i>{{ trans('auth.lbl_logingp') }}</i><div class="clear"></div></a></div>
+									</div>
+							</div>
+							</div>
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
@@ -64,4 +72,5 @@
 		</div>
 	</div>
 </div>
+
 @endsection

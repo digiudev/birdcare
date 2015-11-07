@@ -26,4 +26,7 @@ return [
     'lbl_confirm_pwd' => 'Confirm Password',
     'lbl_register' => 'Register',
     'lbl_logout' => 'Logout',
+    'lbl_loginfb' => 'Login with Facebook',
+    'lbl_logintw' => 'Login with Twitter',
+    'lbl_logingp' => 'Login with Google +'
 ];

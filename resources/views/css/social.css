@@ -1,0 +1,86 @@
+/*start-account*/
+.spanfb {
+    display: block;
+    width: 100%;
+    background: #3B5998;
+    transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    margin-left: 15px;
+}
+.spanfb img {
+    background:#354F88;
+    padding: 7px;
+    float: left;
+}
+.spanfb i {
+    background-color: #3b5998;
+    color: #fff;
+    padding: 7px 14px;
+    float: left;
+    font-size: 1.6em;
+    font-weight: 400;
+    min-width: 70%;
+}
+.spanfb:hover {
+    background:#354F88;
+}
+.spantw {
+    margin-top: 5%;
+    width: 100%;
+    background: #45B0E3;
+    transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    margin-left: 15px;
+}
+.spantw img {
+    background: #40A2D1;
+    padding: 7px;
+    float: left;
+}
+.spantw i {
+    background-color: #45B0E3;
+    color: #fff;
+    padding: 7px 20px;
+    float: left;
+    font-size: 1.6em;
+    font-weight: 400;
+    min-width: 70%;
+}
+.spantw:hover {
+    background:#40A2D1;
+}
+.spangp {
+    margin-top: 5%;
+    width: 100%;
+    background: #DE4C34;
+    transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    margin-left: 15px;
+}
+.spangp img {
+    background: #CE3E26;
+    padding: 7px;
+    float: left;
+}
+.spangp i {
+    background-color: #DE4C34;
+    color: #fff;
+    padding: 7px 17px;
+    float: left;
+    font-size: 1.6em;
+    font-weight: 400;
+    min-width: 70%;
+}
+.spangp:hover {
+    background: #CE3E26;
+}
+/*end-account*/

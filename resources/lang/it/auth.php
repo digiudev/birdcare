@@ -25,4 +25,7 @@ return [
     'lbl_confirm_pwd' => 'Conferma Password',
     'lbl_register' => 'Registrati',
     'lbl_logout' => 'Logout',
+    'lbl_loginfb' => 'Accedi con Facebook',
+    'lbl_logintw' => 'Accedi con Twitter',
+    'lbl_logingp' => 'Accedi con Google +'
 ];

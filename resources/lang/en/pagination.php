@@ -16,5 +16,6 @@ return [
     'previous' => '&laquo; Previous',
     'next'     => 'Next &raquo;',
     'title_welcome' => 'Go to the site',
+    'title_admin' => 'Administration',
 
 ];

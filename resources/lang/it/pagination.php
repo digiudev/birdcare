@@ -16,5 +16,6 @@ return [
     'previous' => '&laquo; Prec.',
     'next'     => 'Pros. &raquo;',
     'title_welcome' => 'Vai al sito',
+    'title_admin' => 'Pannello di amministrazione',
 
 ];

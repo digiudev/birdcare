@@ -12,11 +12,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url ('') }}">Bird Care - Beta Version | Dashboard User</a>
+                <a class="navbar-brand" href="{{ url ('') }}">{{trans('admin.header_title')}}</a>
             </div>
             <!-- /.navbar-header -->
-
             <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-language"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li>
+                                <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+                                    {{{ $properties['native'] }}}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -216,12 +229,12 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> {{ trans('admin.menu_settings') }}</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="/admin/userprofile"><i class="fa fa-gear fa-fw"></i> {{ trans('admin.menu_user_profile') }}</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="/auth/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="/auth/logout"><i class="fa fa-sign-out fa-fw"></i> {{ trans('admin.menu_logout') }}</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

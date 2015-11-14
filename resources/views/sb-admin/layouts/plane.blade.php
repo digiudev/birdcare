@@ -12,22 +12,22 @@
 	<meta content="" name="description"/>
 	<meta content="" name="author"/>
     <!-- Bootstrap Core CSS -->
-    <link href="{{SBADMIN}}bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset(SBADMIN.'bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
 
     <!-- MetisMenu CSS -->
-    <link href="{{SBADMIN}}bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset(SBADMIN.'bower_components/metisMenu/dist/metisMenu.min.css') }}">
 
     <!-- Timeline CSS -->
-    <link href="{{SBADMIN}}dist/css/timeline.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset(SBADMIN.'dist/css/timeline.css') }}">
 
     <!-- Custom CSS -->
-    <link href="{{SBADMIN}}dist/css/sb-admin-2.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset(SBADMIN.'dist/css/sb-admin-2.css') }}">
 
     <!-- Morris Charts CSS -->
-    <link href="{{SBADMIN}}bower_components/morrisjs/morris.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset(SBADMIN.'bower_components/morrisjs/morris.css') }}">
 
     <!-- Custom Fonts -->
-    <link href="{{SBADMIN}}bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset(SBADMIN.'bower_components/font-awesome/css/font-awesome.min.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,21 +40,21 @@
 <body>
 	@yield('body')
     <!-- jQuery -->
-    <script src="{{SBADMIN}}bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="{{ URL::asset(SBADMIN.'bower_components/jquery/dist/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{SBADMIN}}bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{ URL::asset(SBADMIN.'bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{SBADMIN}}bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="{{ URL::asset(SBADMIN.'bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="{{SBADMIN}}bower_components/raphael/raphael-min.js"></script>
-    <script src="{{SBADMIN}}bower_components/morrisjs/morris.min.js"></script>
-    <script src="{{SBADMIN}}js/morris-data.js"></script>
+    <script src="{{ URL::asset(SBADMIN.'bower_components/raphael/raphael-min.js') }}"></script>
+    <script src="{{ URL::asset(SBADMIN.'bower_components/morrisjs/morris.min.js') }}"></script>
+    <script src="{{ URL::asset(SBADMIN.'js/morris-data.js') }}"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="{{SBADMIN}}dist/js/sb-admin-2.js"></script>
+    <script src="{{ URL::asset(SBADMIN.'dist/js/sb-admin-2.js') }}"></script>
 	{{--<script src="{{ asset("assets/scripts/frontend.js") }}" type="text/javascript"></script>--}}
 </body>
 </html>

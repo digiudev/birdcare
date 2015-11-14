@@ -51,11 +51,16 @@ Route::group(
 
 		Route::get('auth/google', 'Auth\AuthController@redirectToProviderG');
 		Route::get('auth/google/callback', 'Auth\AuthController@handleProviderCallbackG');
-});
 
-Route::get('/admin', ['as' => 'admin', 'uses' => function () {
-	return view('sb-admin.home');
-}]);
+		Route::get('/admin', ['as' => 'admin', 'uses' => function () {
+			return view('sb-admin.home');
+		}]);
+
+		Route::get('/admin/userprofile', function () {
+			return view('sb-admin.userprofile');
+		});
+
+	});
 
 Route::get('admin/charts', function()
 {

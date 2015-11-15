@@ -17,4 +17,9 @@ class UserController extends Controller
 		$users = DB::table('prova')->first();
 		echo $users->c1;
 	}
+
+	public function updateDataProfile()
+	{
+		echo 'agiunto';
+	}
 }

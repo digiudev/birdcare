@@ -56,8 +56,24 @@ Route::group(
 			return view('sb-admin.home');
 		}]);
 
-		Route::get('/admin/userprofile', function () {
-			return view('sb-admin.userprofile');
+		Route::get('admin/userprofile', array('as' => 'user.update', function() {
+
+			// ritorno la vista con il profilo utente
+			return view('sb-admin.userprofile')->with(['user' => Auth::user()]);
+		}));
+
+		// route to show our edit form
+		/*Route::get('admin/user/update/{$id}', array('as' => 'user.update', function($id)
+		{
+			// return our view and Nerd information
+			return View::make('nerd-edit') // pulls app/views/nerd-edit.blade.php
+			->with('nerd', Nerd::find($id));
+		}));*/
+
+		// route to process the form
+		Route::post('admin/userprofile', function() {
+			// al salvataggio passa di qua!
+			$user = 1;
 		});
 
 	});

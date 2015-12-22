@@ -78,6 +78,8 @@ Route::group(
 
 	});
 
+Route::post('/admin/mylocation', 'MyLocation@myLocation');
+
 Route::get('admin/charts', function()
 {
 	return View::make('sb-admin.mcharts');

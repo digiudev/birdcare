@@ -22,6 +22,15 @@ class CreateUsersTable extends Migration
             $table->string('handle')->unique();
             $table->string('avatar');
             $table->string('password', 60);
+            $table->integer('idNazione');
+            $table->integer('idRegione');
+            $table->integer('idProvincia');
+            $table->integer('idComune');
+            $table->string('telefono');
+            $table->string('RNA');
+            $table->string('nome_allevamento');
+            $table->boolean('geolocalicalizzazione');
+            $table->boolean('visibile');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -60,6 +60,8 @@ class UserController extends Controller
             $data['telefono'] = Input::get('telefono');
             $data['RNA'] = Input::get('RNA');
             $data['nome_allevamento'] = Input::get('nome_allevamento');
+            $data['geolocalizzazione'] = Input::get('geolocalizzazione');
+            $data['visibile'] = Input::get('visibile');
             DB::table('users')->where('id', Input::get('id'))->update($data);
 
             // Reindirizzo l'utente nel form

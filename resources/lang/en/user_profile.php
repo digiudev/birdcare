@@ -10,5 +10,7 @@ return [
     'cap' => 'ZIP',
     'phone' => 'Phone',
     'name_training' => 'Training name',
+    'geolocalization' => 'Geolocalization',
+    'visibile' => 'Visible',
     'submit' => 'Save'
 ];

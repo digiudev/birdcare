@@ -99,6 +99,20 @@
                 {!! Form::text('nome_allevamento') !!}
             </td>
         </tr>
+        <tr>
+            <td>
+                <!-- nome_allevamento -->
+                {!! Form::label('geolocalizzazione', trans('user_profile.geolocalization')) !!}
+                {!! Form::checkbox('geolocalizzazione') !!}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <!-- nome_allevamento -->
+                {!! Form::label('visibile', trans('user_profile.visibile')) !!}
+                {!! Form::checkbox('visibile') !!}
+            </td>
+        </tr>
     </table>
     <input type="hidden" name="id" value="<?php echo $user->id ?>">
     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">

@@ -21,7 +21,7 @@ class EditUserTable extends Migration
             $table->string('telefono');
             $table->string('RNA');
             $table->string('nome_allevamento');
-            $table->boolean('geolocalicalizzazione');
+            $table->boolean('geolocalizzazione');
             $table->boolean('visibile');
         });
     }
@@ -41,7 +41,7 @@ class EditUserTable extends Migration
             $table->dropColumn('telefono');
             $table->dropColumn('RNA');
             $table->dropColumn('nome_allevamento');
-            $table->dropColumn('geolocalicalizzazione');
+            $table->dropColumn('geolocalizzazione');
             $table->dropColumn('visibile');
         });
     }

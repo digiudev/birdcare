@@ -1,0 +1,8 @@
+.user_profile label{
+    min-width: 150px;
+}
+
+.user_profile #idCountry{
+    min-width: 180px;
+    max-width: 100px;
+}

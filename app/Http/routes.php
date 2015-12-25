@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Http\Controllers\Countries;
 
 Route::group(
 	[
@@ -59,7 +60,7 @@ Route::group(
 		Route::get('admin/userprofile', array('as' => 'user.update', function() {
 
 			// ritorno la vista con il profilo utente
-			return view('sb-admin.userprofile')->with(['user' => Auth::user()]);
+			return view('sb-admin.userprofile')->with(['user' => Auth::user(), 'countries' => app('App\Http\Controllers\Countries')->getCountriesForSelect()]);
 		}));
 
 		// route to show our edit form

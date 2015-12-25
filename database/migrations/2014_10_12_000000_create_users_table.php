@@ -12,28 +12,28 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('facebook_id')->unique();
-            $table->string('twitter_id');
-            $table->string('google_id')->unique();
-            $table->string('handle')->unique();
-            $table->string('avatar');
-            $table->string('password', 60);
-            $table->integer('idNazione');
-            $table->integer('idRegione');
-            $table->integer('idProvincia');
-            $table->integer('idComune');
-            $table->string('telefono');
-            $table->string('RNA');
-            $table->string('nome_allevamento');
-            $table->boolean('geolocalicalizzazione');
-            $table->boolean('visibile');
-            $table->rememberToken();
-            $table->timestamps();
-        });
+            Schema::create('users', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->string('email')->unique();
+                $table->string('facebook_id')->unique();
+                $table->string('twitter_id');
+                $table->string('google_id')->unique();
+                $table->string('handle')->unique();
+                $table->string('avatar');
+                $table->string('password', 60);
+                $table->integer('idNazione');
+                $table->integer('idRegione');
+                $table->integer('idProvincia');
+                $table->integer('idComune');
+                $table->string('telefono');
+                $table->string('RNA');
+                $table->string('nome_allevamento');
+                $table->boolean('geolocalicalizzazione');
+                $table->boolean('visibile');
+                $table->rememberToken();
+                $table->timestamps();
+            });
     }
 
     /**

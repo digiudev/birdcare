@@ -2,122 +2,110 @@
 @section('page_heading','User Profile')
 @section('section')
     {!! Html::style('resources/views/css/sb-admin-custom.css') !!}
-<div>
-    <script>
-        function getLocation() {
-            if (navigator.geolocation) {
-                console.log(navigator.geolocation);
-                navigator.geolocation.getCurrentPosition(savePosition, positionError, {timeout:10000});
-            } else {
-                //Geolocation is not supported by this browser
+    <div>
+        <script>
+            function getLocation() {
+                if (navigator.geolocation) {
+                    console.log(navigator.geolocation);
+                    navigator.geolocation.getCurrentPosition(savePosition, positionError, {timeout: 10000});
+                } else {
+                    //Geolocation is not supported by this browser
+                }
             }
-        }
 
-        // handle the error here
-        function positionError(error) {
-            var errorCode = error.code;
-            var message = error.message;
+            // handle the error here
+            function positionError(error) {
+                var errorCode = error.code;
+                var message = error.message;
 
-            alert(message);
-        }
+                alert(message);
+            }
 
-        function savePosition(position) {
-            console.log(position);
-            $.post("/admin/mylocation", {lat: position.coords.latitude, lng: position.coords.longitude, _token: "<?php echo csrf_token() ?>" });
-        }
+            function savePosition(position) {
+                console.log(position);
+                $.post("/admin/mylocation", {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                    _token: "<?php echo csrf_token() ?>"
+                });
+            }
         </script>
-    <button onclick="getLocation();">Get My Location</button>
-    @if ($errors->has())
-        <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                {{ $error }}<br>
-            @endforeach
-        </div>
-    @endif
-    {!! Form::model($user, array('route' => array('user.update', $user->id))) !!}
-    <table class="cls_form user_profile">
-        <tr>
-            <td>
-                <!-- RNA -->
-                {!! Form::label('RNA', trans('user_profile.rna').' *') !!}
-                {!! Form::text('RNA') !!}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <!-- name -->
-                {!! Form::label('name', trans('user_profile.name').' *')!!}
-                {!! Form::text('name') !!}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <!-- email -->
-                {!! Form::label('email', trans('user_profile.email').' *') !!}
-                {!! Form::email('email') !!}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <!-- countries -->
-                {!! Form::label('id_country', trans('user_profile.country')) !!}
-                {!! Form::select('id_country', $countries, null, ['id'=>'id_country']) !!}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <!-- province -->
-                {!! Form::label('province', trans('user_profile.province')) !!}
-                {!! Form::text('province') !!}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <!-- city -->
-                {!! Form::label('city', trans('user_profile.city')) !!}
-                {!! Form::text('city') !!}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <!-- cap -->
-                {!! Form::label('zip', trans('user_profile.zip')) !!}
-                {!! Form::text('zip') !!}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <!-- telefono -->
-                {!! Form::label('phone', trans('user_profile.phone')) !!}
-                {!! Form::text('phone') !!}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <!-- nome_allevamento -->
-                {!! Form::label('breeding_name', trans('user_profile.breeding_name')) !!}
-                {!! Form::text('breeding_name') !!}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <!-- nome_allevamento -->
-                {!! Form::label('geolocalization', trans('user_profile.geolocalization')) !!}
-                {!! Form::checkbox('geolocalization') !!}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <!-- nome_allevamento -->
-                {!! Form::label('visible', trans('user_profile.visible')) !!}
-                {!! Form::checkbox('visible') !!}
-            </td>
-        </tr>
-    </table>
-    <input type="hidden" name="id" value="<?php echo $user->id ?>">
-    <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
-{!! Form::submit(trans('user_profile.submit')) !!}
 
-{!! Form::close() !!}
-</div>
+        @if ($errors->has())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    {{ $error }}<br>
+                @endforeach
+            </div>
+        @endif
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-lg-6">
+                    {!! Form::model($user, ['route' => ['user.update', $user->id], 'role'=>'form']) !!}
+
+                    <div class="form-group">
+                        <!-- RNA -->
+                        {!! Form::label('RNA', trans('user_profile.rna').' *') !!}
+                        {!! Form::text('RNA', null, ['class'=>'form-control']) !!}
+                    </div>
+
+                    <div class="form-group">
+                        <!-- name -->
+                        {!! Form::label('name', trans('user_profile.name').' *')!!}
+                        {!! Form::text('name', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        <!-- email -->
+                        {!! Form::label('email', trans('user_profile.email').' *') !!}
+                        {!! Form::email('email', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        <!-- countries -->
+                        {!! Form::label('id_country', trans('user_profile.country')) !!}
+                        {!! Form::select('id_country', $countries, null, ['id'=>'id_country', 'class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        <!-- province -->
+                        {!! Form::label('province', trans('user_profile.province')) !!}
+                        {!! Form::text('province', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        <!-- city -->
+                        {!! Form::label('city', trans('user_profile.city')) !!}
+                        {!! Form::text('city', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        <!-- cap -->
+                        {!! Form::label('zip', trans('user_profile.zip')) !!}
+                        {!! Form::text('zip', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        <!-- telefono -->
+                        {!! Form::label('phone', trans('user_profile.phone')) !!}
+                        {!! Form::text('phone', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        <!-- nome_allevamento -->
+                        {!! Form::label('breeding_name', trans('user_profile.breeding_name')) !!}
+                        {!! Form::text('breeding_name', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            {!! Form::checkbox('geolocalization') !!}  <?php echo trans('user_profile.geolocalization') ?>
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            {!! Form::checkbox('visible') !!} <?php echo trans('user_profile.visible') ?>
+                        </label>
+                    </div>
+                    <input type="hidden" name="id" value="<?php echo $user->id ?>">
+                    <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                    {!! Form::submit(trans('user_profile.submit')) !!}
+
+                    {!! Form::close() !!}
+                    <button onclick="getLocation();">Get My Location</button>
+                </div>
+            </div>
+        </div>
 @stop

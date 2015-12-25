@@ -11,6 +11,7 @@
 |
 */
 use App\Http\Controllers\Countries;
+use Illuminate\Support\Facades\Route;
 
 Route::group(
 	[
@@ -63,19 +64,8 @@ Route::group(
 			return view('sb-admin.userprofile')->with(['user' => Auth::user(), 'countries' => app('App\Http\Controllers\Countries')->getCountriesForSelect()]);
 		}));
 
-		// route to show our edit form
-		/*Route::get('admin/user/update/{$id}', array('as' => 'user.update', function($id)
-		{
-			// return our view and Nerd information
-			return View::make('nerd-edit') // pulls app/views/nerd-edit.blade.php
-			->with('nerd', Nerd::find($id));
-		}));*/
-
-		// route to process the form
-		Route::post('admin/userprofile', function() {
-			// al salvataggio passa di qua!
-			$user = 1;
-		});
+		// In POST vengono passati tutti i dati del form che vengono poi girati al validator
+		Route::post('admin/userprofile', 'UserController@updateDataProfile');
 
 	});
 

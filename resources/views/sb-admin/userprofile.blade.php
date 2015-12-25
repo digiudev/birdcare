@@ -27,26 +27,33 @@
         }
         </script>
     <button onclick="getLocation();">Get My Location</button>
+    @if ($errors->has())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>
+            @endforeach
+        </div>
+    @endif
     {!! Form::model($user, array('route' => array('user.update', $user->id))) !!}
     <table class="cls_form user_profile">
         <tr>
             <td>
                 <!-- RNA -->
-                {!! Form::label('RNA', trans('user_profile.rna')) !!}
+                {!! Form::label('RNA', trans('user_profile.rna').' *') !!}
                 {!! Form::text('RNA') !!}
             </td>
         </tr>
         <tr>
             <td>
                 <!-- name -->
-                {!! Form::label('name', trans('user_profile.name') )!!}
+                {!! Form::label('name', trans('user_profile.name').' *')!!}
                 {!! Form::text('name') !!}
             </td>
         </tr>
         <tr>
             <td>
                 <!-- email -->
-                {!! Form::label('email', trans('user_profile.email')) !!}
+                {!! Form::label('email', trans('user_profile.email').' *') !!}
                 {!! Form::email('email') !!}
             </td>
         </tr>
@@ -54,7 +61,7 @@
             <td>
                 <!-- countries -->
                 {!! Form::label('idCountry', trans('user_profile.country')) !!}
-                {!! Form::select('idCuntry', $countries, 'idCountry', ['id'=>'idCountry']) !!}
+                {!! Form::select('idCountry', $countries, null, ['id'=>'idCountry']) !!}
             </td>
         </tr>
         <tr>
@@ -93,6 +100,7 @@
             </td>
         </tr>
     </table>
+    <input type="hidden" name="id" value="<?php echo $user->id ?>">
     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
 {!! Form::submit(trans('user_profile.submit')) !!}
 

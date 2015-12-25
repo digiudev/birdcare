@@ -32,7 +32,7 @@ class UserController extends Controller
 			'name'             => 'required',
 			'email'            => 'required|email',
             'RNA'              => 'required',
-            'idCountry'          => 'required'
+            'id_country'          => 'required'
         );
 
 		// Inizializzo il validator con tutti i campi del form e le regole
@@ -53,15 +53,15 @@ class UserController extends Controller
             $data = [];
             $data['name'] = Input::get('name');
             $data['email'] = Input::get('email');
-            $data['idCountry'] = Input::get('idCountry');
+            $data['id_country'] = Input::get('id_country');
             $data['province'] = Input::get('province');
             $data['city'] = Input::get('city');
-            $data['cap'] = Input::get('cap');
-            $data['telefono'] = Input::get('telefono');
+            $data['zip'] = Input::get('zip');
+            $data['phone'] = Input::get('phone');
             $data['RNA'] = Input::get('RNA');
-            $data['nome_allevamento'] = Input::get('nome_allevamento');
-            $data['geolocalizzazione'] = Input::get('geolocalizzazione');
-            $data['visibile'] = Input::get('visibile');
+            $data['breeding_name'] = Input::get('breeding_name');
+            $data['geolocalization'] = Input::get('geolocalization');
+            $data['visible'] = Input::get('visible');
             DB::table('users')->where('id', Input::get('id'))->update($data);
 
             // Reindirizzo l'utente nel form

@@ -7,10 +7,10 @@ return [
     'country' => 'Country',
     'province' => 'Province',
     'city' => 'City',
-    'cap' => 'ZIP',
+    'zip' => 'ZIP',
     'phone' => 'Phone',
-    'name_training' => 'Training name',
+    'breeding_name' => 'Training name',
     'geolocalization' => 'Geolocalization',
-    'visibile' => 'Visible',
+    'visible' => 'Visible',
     'submit' => 'Save'
 ];

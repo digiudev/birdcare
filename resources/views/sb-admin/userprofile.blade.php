@@ -60,8 +60,8 @@
         <tr>
             <td>
                 <!-- countries -->
-                {!! Form::label('idCountry', trans('user_profile.country')) !!}
-                {!! Form::select('idCountry', $countries, null, ['id'=>'idCountry']) !!}
+                {!! Form::label('id_country', trans('user_profile.country')) !!}
+                {!! Form::select('id_country', $countries, null, ['id'=>'id_country']) !!}
             </td>
         </tr>
         <tr>
@@ -81,36 +81,36 @@
         <tr>
             <td>
                 <!-- cap -->
-                {!! Form::label('cap', trans('user_profile.cap')) !!}
-                {!! Form::text('cap') !!}
+                {!! Form::label('zip', trans('user_profile.zip')) !!}
+                {!! Form::text('zip') !!}
             </td>
         </tr>
         <tr>
             <td>
                 <!-- telefono -->
-                {!! Form::label('telefono', trans('user_profile.phone')) !!}
-                {!! Form::text('telefono') !!}
+                {!! Form::label('phone', trans('user_profile.phone')) !!}
+                {!! Form::text('phone') !!}
             </td>
         </tr>
         <tr>
             <td>
                 <!-- nome_allevamento -->
-                {!! Form::label('nome_allevamento', trans('user_profile.name_training')) !!}
-                {!! Form::text('nome_allevamento') !!}
+                {!! Form::label('breeding_name', trans('user_profile.breeding_name')) !!}
+                {!! Form::text('breeding_name') !!}
             </td>
         </tr>
         <tr>
             <td>
                 <!-- nome_allevamento -->
-                {!! Form::label('geolocalizzazione', trans('user_profile.geolocalization')) !!}
-                {!! Form::checkbox('geolocalizzazione') !!}
+                {!! Form::label('geolocalization', trans('user_profile.geolocalization')) !!}
+                {!! Form::checkbox('geolocalization') !!}
             </td>
         </tr>
         <tr>
             <td>
                 <!-- nome_allevamento -->
-                {!! Form::label('visibile', trans('user_profile.visibile')) !!}
-                {!! Form::checkbox('visibile') !!}
+                {!! Form::label('visible', trans('user_profile.visible')) !!}
+                {!! Form::checkbox('visible') !!}
             </td>
         </tr>
     </table>

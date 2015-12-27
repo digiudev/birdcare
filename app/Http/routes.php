@@ -60,8 +60,26 @@ Route::group(
 
 		Route::get('admin/userprofile', array('as' => 'user.update', function() {
 
-			// ritorno la vista con il profilo utente
-			return view('sb-admin.userprofile')->with(['user' => Auth::user(), 'countries' => app('App\Http\Controllers\Countries')->getCountriesForSelect()]);
+			$validator = JsValidator::make([
+				'name'             => 'required',
+				'email'            => 'required|email',
+				'RNA'              => 'required',
+				'id_country'          => 'required'
+			],
+				[
+					'name' => 'validation.my_custom_lang_message',
+					'email'            => ':attribute can\'t be empty',
+					'RNA'              => ':attribute can\'t be empty',
+					'id_country'          => ':attribute should has at least :min chars'
+     			 ],
+			  [
+				'name' => 'Username',
+				'email'=> 'email',
+				'RNA' => 'RNA',
+				  'id_country'          => ':attribute should has at least :min chars'
+			   ],
+       '#form-user-profile');
+			return view('sb-admin.userprofile')->with(['user' => Auth::user(), 'validator' => $validator, 'countries' => app('App\Http\Controllers\Countries')->getCountriesForSelect()]);
 		}));
 
 		// In POST vengono passati tutti i dati del form che vengono poi girati al validator

@@ -1,8 +1,7 @@
 @extends('sb-admin.layouts.dashboard')
-@section('page_heading','User Profile')
+@section('page_heading',trans('user_profile.title'))
 @section('section')
     {!! Html::style('resources/views/css/sb-admin-custom.css') !!}
-    <div>
         <script>
             function getLocation() {
                 if (navigator.geolocation) {
@@ -41,7 +40,7 @@
         <div class="col-sm-12">
             <div class="row">
                 <div class="col-lg-6">
-                    {!! Form::model($user, ['route' => ['user.update', $user->id], 'role'=>'form']) !!}
+                    {!! Form::model($user, ['route' => ['user.update', $user->id], 'role'=>'form', 'id'=> 'form-user-profile']) !!}
 
                     <div class="form-group">
                         <!-- RNA -->
@@ -106,6 +105,11 @@
                     {!! Form::close() !!}
                     <button onclick="getLocation();">Get My Location</button>
                 </div>
+                <div class="col-lg-6">
+                    <img src="<?php echo $user->avatar ?>">
+                </div>
             </div>
+
         </div>
+
 @stop

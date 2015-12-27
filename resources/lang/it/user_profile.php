@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'title' => 'Profilo utente',
     'name' => 'Nome',
     'rna' => 'RNA',
     'email' => 'E-mail',

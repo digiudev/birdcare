@@ -40,10 +40,19 @@
 <body>
 	@yield('body')
     <!-- jQuery -->
-    <script src="{{ URL::asset(SBADMIN.'bower_components/jquery/dist/jquery.min.js') }}"></script>
+<!--    <script src="{{ URL::asset(SBADMIN.'bower_components/jquery/dist/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{ URL::asset(SBADMIN.'bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!--  <script src="{{ URL::asset(SBADMIN.'bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- Scripts -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <?php if (isset($validator)) {?>
+            <!-- Laravel Javascript Validation -->
+    <script type="text/javascript" src="{{ asset('public/vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! $validator !!}
+    <?php }?>
+
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="{{ URL::asset(SBADMIN.'bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
@@ -56,5 +65,6 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ URL::asset(SBADMIN.'dist/js/sb-admin-2.js') }}"></script>
 	{{--<script src="{{ asset("assets/scripts/frontend.js") }}" type="text/javascript"></script>--}}
+
 </body>
 </html>

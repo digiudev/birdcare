@@ -11,10 +11,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
-
 class UserController extends Controller
 {
 
+	protected $validationRules = [
+		'name'             => 'required',
+		'email'            => 'required|email',
+		'RNA'              => 'required',
+		'id_country'          => 'required'
+	];
 	/**
 	 * Show the profile for the given user.
 	 */
@@ -23,6 +28,24 @@ class UserController extends Controller
 		$users = DB::table('prova')->first();
 		echo $users->c1;
 	}
+
+	/**
+	 * Show the edit form for blog post
+	 * We create a JsValidator instance based on shared validation rules
+	 * @param  string  $post_id
+	 * @return Response
+	 */
+	public function edit($post_id)
+	{
+		$validator = JsValidator::make($this->validationRules);
+		$post = Post::find($post_id);
+
+		return view('sb-admin.userprofile')->with([
+			'validator' => $validator,
+			'post' => $post
+		]);
+
+    }
 
 	public function updateDataProfile()
 	{

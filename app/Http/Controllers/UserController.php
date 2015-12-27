@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\Countries;
+use Illuminate\Support\Facades\Route;
+use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
+
 
 class UserController extends Controller
 {
@@ -47,6 +51,29 @@ class UserController extends Controller
 
     }
 
+    public function getValidatorJS(){
+
+        $validator = JsValidator::make([
+            'name' => 'required',
+            'email'=> 'required|email',
+            'RNA'  => 'required',
+            'id_country' => 'required'
+        ],
+            [
+                'name' => 'validation.name',
+                'email'=> 'validation.email',
+                'RNA'  => 'validation.rna',
+                'id_country' => 'validation.country'
+            ],
+            [
+                'name' => 'Username',
+                'email'=> 'email',
+                'RNA' => 'RNA',
+                'id_country' => 'Country'
+            ],
+            '#form-user-profile');
+        return $validator;
+    }
 	public function updateDataProfile()
 	{
 

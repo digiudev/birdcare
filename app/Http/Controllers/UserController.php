@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Countries;
 use Illuminate\Support\Facades\Route;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -36,18 +37,23 @@ class UserController extends Controller
 	/**
 	 * Show the edit form for blog post
 	 * We create a JsValidator instance based on shared validation rules
-	 * @param  string  $post_id
 	 * @return Response
 	 */
-	public function edit($post_id)
+	public function editProfile()
 	{
-		$validator = JsValidator::make($this->validationRules);
-		$post = Post::find($post_id);
+		$user = Auth::user();
 
-		return view('sb-admin.userprofile')->with([
-			'validator' => $validator,
-			'post' => $post
-		]);
+		$blnGeo = true;
+		// se non ho le informazioni sulla geo
+		if($user->id_country!='' && $user->id_country>0)
+			$blnGeo = true;
+
+		return [
+			'getLocation' => $blnGeo,
+			'user' => $user,
+			'validator' => $this->getValidatorJS(),
+			'countries' => app('App\Http\Controllers\Countries')->getCountriesForSelect()
+		];
 
     }
 
@@ -117,6 +123,26 @@ class UserController extends Controller
             // Reindirizzo l'utente nel form
 			return Redirect::to('admin/userprofile');
 
+		}
+	}
+
+	public function updateUserWithLocation($location){
+
+		$datiUtente = Auth::user();
+		if(sizeof($location)>0)
+		{
+			if($datiUtente->getAttribute('zip')!='' && $location['postal_code']!='')
+				$datiUtente->setAttribute('zip', $location['postal_code']);
+			if($datiUtente->getAttribute('city')!='' && $location['administrative_area_level_3']!='')
+				$datiUtente->setAttribute('city', $location['administrative_area_level_3']);
+			if($datiUtente->getAttribute('city')!='' && $location['locality']!='')
+				$datiUtente->setAttribute('city', $location['locality']);
+			if($datiUtente->getAttribute('province')!='' && $location['administrative_area_level_2']!='')
+				$datiUtente->setAttribute('province', $location['administrative_area_level_2']);
+			if($datiUtente->getAttribute('province')!='' && $location['administrative_area_level_1']!='')
+				$datiUtente->setAttribute('province', $location['administrative_area_level_1']);
+			if($datiUtente->getAttribute('id_country')!='')
+				$datiUtente->setAttribute('id_country', app('App\Http\Controllers\Countries')->getCountriesByName($location['country'])->id);
 		}
 	}
 }

@@ -28,6 +28,7 @@
                     _token: "<?php echo csrf_token() ?>"
                 });
             }
+
         </script>
 
         @if ($errors->has())

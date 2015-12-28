@@ -33,4 +33,10 @@ class Countries extends Controller
     {
         echo 'agiunto';
     }
+
+    public function getCountriesByName($name='')
+    {
+        $db =  DB::table('countries')->where('nome', addslashes($name))->first();
+        return $db;
+    }
 }

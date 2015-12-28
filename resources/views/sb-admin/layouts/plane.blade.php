@@ -66,5 +66,14 @@
     <script src="{{ URL::asset(SBADMIN.'dist/js/sb-admin-2.js') }}"></script>
 	{{--<script src="{{ asset("assets/scripts/frontend.js") }}" type="text/javascript"></script>--}}
 
+    <?php if(isset($getLocation) && $getLocation===true) {?>
+    <script>
+        $(window).load(function() {
+            console.log('caricooo');
+            getLocation();
+        })
+    </script>
+    <?php } ?>
+
 </body>
 </html>

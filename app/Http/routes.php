@@ -58,16 +58,10 @@ Route::group(
 			return view('sb-admin.home');
 		}]);
 
-		Route::get('admin/userprofile', array('as' => 'user.update',  function() {
+		Route::get('admin/userprofile', array('as' => 'user.update', function() {
 			return view('sb-admin.userprofile')
-				->with(
-					[
-						'user' => Auth::user(),
-						'validator' => app('App\Http\Controllers\UserController')->getValidatorJS(),
-						'countries' => app('App\Http\Controllers\Countries')->getCountriesForSelect()
-					]);
+				->with(app('App\Http\Controllers\UserController')->editProfile());;
 		}));
-
 		// In POST vengono passati tutti i dati del form che vengono poi girati al validator
 		Route::post('admin/userprofile', 'UserController@updateDataProfile');
 

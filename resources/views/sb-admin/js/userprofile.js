@@ -35,6 +35,7 @@ UserProfile = {
                 UserProfile.updateFieldByName('city', dati.city);
                 UserProfile.updateFieldByName('province', dati.province);
                 UserProfile.updateFieldByName('zip', dati.zip);
+                UserProfile.updateFieldByName('address', dati.address);
                 UserProfile.updateSelect('id_country', dati.id_country)
             }
         });

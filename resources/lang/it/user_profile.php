@@ -13,5 +13,6 @@ return [
     'breeding_name' => 'Nome allevamento',
     'geolocalization' => 'Geolocalizzazione',
     'visible' => 'Visibile',
+    'address' => 'Indirizzo',
     'submit' => 'Salva'
 ];

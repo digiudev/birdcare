@@ -46,7 +46,7 @@ class UserController extends Controller
 		$blnGeo = true;
 		// se non ho le informazioni sulla geo
 		if($user->id_country!='' && $user->id_country>0)
-			$blnGeo = true;
+			$blnGeo = false;
 
 		return [
 			'getLocation' => $blnGeo,
@@ -116,8 +116,7 @@ class UserController extends Controller
             $data['phone'] = Input::get('phone');
             $data['RNA'] = Input::get('RNA');
             $data['breeding_name'] = Input::get('breeding_name');
-            $data['geolocalization'] = Input::get('geolocalization');
-            $data['visible'] = Input::get('visible');
+			$data['address'] = Input::get('address');
             DB::table('users')->where('id', Input::get('id'))->update($data);
 
             // Reindirizzo l'utente nel form
@@ -141,6 +140,8 @@ class UserController extends Controller
 				$datiUtente->setAttribute('province', $location['administrative_area_level_2']);
 			if($datiUtente->getAttribute('province')=='' && $location['administrative_area_level_1']!='')
 				$datiUtente->setAttribute('province', $location['administrative_area_level_1']);
+			if($datiUtente->getAttribute('address')=='' && $location['route']!='')
+				$datiUtente->setAttribute('address', $location['route']. ' '. $location['street_number']);
 			if($datiUtente->getAttribute('id_country')=='')
 				$datiUtente->setAttribute('id_country', app('App\Http\Controllers\Countries')->getCountriesByName($location['country'])->id);
 		}

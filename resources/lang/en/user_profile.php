@@ -13,5 +13,6 @@ return [
     'breeding_name' => 'Training name',
     'geolocalization' => 'Geolocalization',
     'visible' => 'Visible',
+    'address' => 'Address',
     'submit' => 'Save'
 ];

@@ -53,6 +53,11 @@
                         {!! Form::text('zip', null, ['class'=>'form-control']) !!}
                     </div>
                     <div class="form-group">
+                        <!-- cap -->
+                        {!! Form::label('address', trans('user_profile.address')) !!}
+                        {!! Form::text('address', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group">
                         <!-- telefono -->
                         {!! Form::label('phone', trans('user_profile.phone')) !!}
                         {!! Form::text('phone', null, ['class'=>'form-control']) !!}
@@ -62,7 +67,7 @@
                         {!! Form::label('breeding_name', trans('user_profile.breeding_name')) !!}
                         {!! Form::text('breeding_name', null, ['class'=>'form-control']) !!}
                     </div>
-                    <div class="checkbox">
+                    <!--<div class="checkbox">
                         <label>
                             {!! Form::checkbox('geolocalization') !!}  <?php echo trans('user_profile.geolocalization') ?>
                         </label>
@@ -71,7 +76,7 @@
                         <label>
                             {!! Form::checkbox('visible') !!} <?php echo trans('user_profile.visible') ?>
                         </label>
-                    </div>
+                    </div>-->
                     <input type="hidden" name="id" value="<?php echo $user->id ?>">
                     <!--<input type="hidden" name="_token" value="<?php //echo csrf_token() ?>">-->
                     {!! Form::submit(trans('user_profile.submit')) !!}

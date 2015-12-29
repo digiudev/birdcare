@@ -131,17 +131,17 @@ class UserController extends Controller
 		$datiUtente = Auth::user();
 		if(sizeof($location)>0)
 		{
-			if($datiUtente->getAttribute('zip')!='' && $location['postal_code']!='')
+			if($datiUtente->getAttribute('zip')=='' && $location['postal_code']!='')
 				$datiUtente->setAttribute('zip', $location['postal_code']);
-			if($datiUtente->getAttribute('city')!='' && $location['administrative_area_level_3']!='')
+			if($datiUtente->getAttribute('city')=='' && $location['administrative_area_level_3']!='')
 				$datiUtente->setAttribute('city', $location['administrative_area_level_3']);
-			if($datiUtente->getAttribute('city')!='' && $location['locality']!='')
+			if($datiUtente->getAttribute('city')=='' && $location['locality']!='')
 				$datiUtente->setAttribute('city', $location['locality']);
-			if($datiUtente->getAttribute('province')!='' && $location['administrative_area_level_2']!='')
+			if($datiUtente->getAttribute('province')=='' && $location['administrative_area_level_2']!='')
 				$datiUtente->setAttribute('province', $location['administrative_area_level_2']);
-			if($datiUtente->getAttribute('province')!='' && $location['administrative_area_level_1']!='')
+			if($datiUtente->getAttribute('province')=='' && $location['administrative_area_level_1']!='')
 				$datiUtente->setAttribute('province', $location['administrative_area_level_1']);
-			if($datiUtente->getAttribute('id_country')!='')
+			if($datiUtente->getAttribute('id_country')=='')
 				$datiUtente->setAttribute('id_country', app('App\Http\Controllers\Countries')->getCountriesByName($location['country'])->id);
 		}
 	}

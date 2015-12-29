@@ -2,34 +2,6 @@
 @section('page_heading',trans('user_profile.title'))
 @section('section')
     {!! Html::style('resources/views/css/sb-admin-custom.css') !!}
-        <script>
-            function getLocation() {
-                if (navigator.geolocation) {
-                    console.log(navigator.geolocation);
-                    navigator.geolocation.getCurrentPosition(savePosition, positionError, {timeout: 10000});
-                } else {
-                    //Geolocation is not supported by this browser
-                }
-            }
-
-            // handle the error here
-            function positionError(error) {
-                var errorCode = error.code;
-                var message = error.message;
-
-                alert(message);
-            }
-
-            function savePosition(position) {
-                console.log(position);
-                $.post("/admin/mylocation", {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                    _token: "<?php echo csrf_token() ?>"
-                });
-            }
-
-        </script>
 
         @if ($errors->has())
             <div class="alert alert-danger">
@@ -38,6 +10,7 @@
                 @endforeach
             </div>
         @endif
+
         <div class="col-sm-12">
             <div class="row">
                 <div class="col-lg-6">
@@ -100,11 +73,11 @@
                         </label>
                     </div>
                     <input type="hidden" name="id" value="<?php echo $user->id ?>">
-                    <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                    <!--<input type="hidden" name="_token" value="<?php //echo csrf_token() ?>">-->
                     {!! Form::submit(trans('user_profile.submit')) !!}
 
                     {!! Form::close() !!}
-                    <button onclick="getLocation();">Get My Location</button>
+                    <!--<button onclick="getLocation();">Get My Location</button>-->
                 </div>
                 <div class="col-lg-6">
                     <img src="<?php echo $user->avatar ?>">
@@ -112,5 +85,6 @@
             </div>
 
         </div>
-
+    <!-- Scripts -->
+    {!! Html::script('resources/views/sb-admin/js/userprofile.js') !!}
 @stop

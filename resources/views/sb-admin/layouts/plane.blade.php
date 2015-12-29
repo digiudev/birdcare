@@ -67,10 +67,10 @@
 	{{--<script src="{{ asset("assets/scripts/frontend.js") }}" type="text/javascript"></script>--}}
 
     <?php if(isset($getLocation) && $getLocation===true) {?>
+
     <script>
         $(window).load(function() {
-            console.log('caricooo');
-            getLocation();
+            UserProfile.getLocation();
         })
     </script>
     <?php } ?>

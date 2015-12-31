@@ -229,7 +229,7 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> {{ trans('admin.menu_settings') }}</a>
+                        <li><a href="/admin/settings"><i class="fa fa-user fa-fw"></i> {{ trans('admin.menu_settings') }}</a>
                         </li>
                         <li><a href="/admin/userprofile"><i class="fa fa-gear fa-fw"></i> {{ trans('admin.menu_user_profile') }}</a>
                         </li>

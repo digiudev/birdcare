@@ -14,11 +14,13 @@ use App\Http\Controllers\Countries;
 use Illuminate\Support\Facades\Route;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 use Illuminate\Support\Facades\Auth;
+use App\Library\DiGiuDevForm;
 
 
 class UserController extends Controller
 {
 
+	protected $idUser = null;
 	protected $validationRules = [
 		'name'             => 'required',
 		'email'            => 'required|email',
@@ -146,4 +148,54 @@ class UserController extends Controller
 				$datiUtente->setAttribute('id_country', app('App\Http\Controllers\Countries')->getCountriesByName($location['country'])->id);
 		}
 	}
+
+	/**
+	 * Show the edit form for blog post
+	 * We create a JsValidator instance based on shared validation rules
+	 * @return Response
+	 */
+	public function editSettings()
+	{
+		$user = Auth::user();
+		$this->idUser = (int)$user->id;
+		$settings = $this->getSettings();
+		if($settings === null)
+			$this->createDefaultSetting();
+
+		return [
+			'settings' => $settings,
+			'user' => $user
+		];
+	}
+
+	public function createDefaultSetting($idUser = '')
+	{
+		if($idUser!='')
+			$this->idUser = $idUser;
+
+		return DB::table('settings')->insert([
+			'id_user' => $this->idUser,
+			'localization' => 0,
+			'visible' => 0
+		]);
+	}
+
+	public function getSettings()
+	{
+		return DB::table('settings')->where('id_user', $this->idUser)->first();
+	}
+
+	public function updateDataSettings()
+	{
+
+			// Aggiorno i dati del DB
+			$data = [];
+			$data['localization'] = DiGiuDevForm::getValSwitch('localization');
+			$data['visible'] = DiGiuDevForm::getValSwitch('visible');
+			DB::table('settings')->where('id_user', Input::get('id_user'))->update($data);
+
+			// Reindirizzo l'utente nel form
+			return Redirect::to('admin/settings');
+	}
+
 }

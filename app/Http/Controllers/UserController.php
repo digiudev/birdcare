@@ -198,4 +198,8 @@ class UserController extends Controller
 			return Redirect::to('admin/settings');
 	}
 
+	public function getDataProfile($idUtente)
+	{
+		return DB::table('users')->where('id', (int)$idUtente)->first();
+	}
 }

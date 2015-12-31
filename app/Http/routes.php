@@ -72,6 +72,15 @@ Route::group(
 		// In POST vengono passati tutti i dati del form che vengono poi girati al validator
 		Route::post('admin/settings', 'UserController@updateDataSettings');
 
+
+		Route::get('admin/listbreeders', array('as' => 'breeders.list', function() {
+			return view('sb-admin.listbreeders')
+				->with(['list' => app('App\Http\Controllers\Breeders')->getListBreeders()]);
+		}));
+
+		// In POST vengono passati tutti i dati del form che vengono poi girati al validator
+		Route::post('admin/listbreeders', 'UserController@updateDataProfile');
+
 	});
 
 Route::post('/admin/mylocation', 'MyLocation@myLocation');

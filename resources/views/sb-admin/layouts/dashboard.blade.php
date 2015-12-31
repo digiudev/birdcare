@@ -30,7 +30,7 @@
                         @endforeach
                     </ul>
                 </li>
-                <li class="dropdown">
+                {{--<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
@@ -222,7 +222,7 @@
                         </li>
                     </ul>
                     <!-- /.dropdown-alerts -->
-                </li>
+                </li>--}}
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -248,7 +248,7 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="{{ trans('admin.search_placeholder') }}">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
@@ -258,9 +258,12 @@
                             <!-- /input-group -->
                         </li>
                         <li {{ (Request::is('admin/') ? 'class="active"' : '') }}>
-                            <a href="{{ url ('admin/') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{{ url ('admin/') }}"><i class="fa fa-dashboard fa-fw"></i> {{ trans('admin.dashboard') }}</a>
                         </li>
-                        <li {{ (Request::is('*charts') ? 'class="active"' : '') }}>
+                        <li {{ (Request::is('admin/listbreeders') ? 'class="active"' : '') }}>
+                            <a href="{{ url ('admin/listbreeders') }}"><i class="fa fa-users  fa-fw"></i> {{ trans('breeders.title') }}</a>
+                        </li>
+                        {{--<li {{ (Request::is('*charts') ? 'class="active"' : '') }}>
                             <a href="{{ url ('admin/charts') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Charts</a>
                             <!-- /.nav-second-level -->
                         </li>
@@ -339,7 +342,7 @@
                         <li {{ (Request::is('*documentation') ? 'class="active"' : '') }}>
                             <a href="{{ url ('documentation') }}"><i class="fa fa-file-word-o fa-fw"></i> Documentation</a>
                         </li>
-                    </ul>
+                    </ul>--}}
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>

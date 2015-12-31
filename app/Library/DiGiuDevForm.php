@@ -8,7 +8,7 @@ class DiGiuDevForm
     {
         if($lbl===null) $lbl = ucfirst($name);
         if($id===null) $id=$name;
-        $html = '<div style="max-width: 200px;"><div class="onoffswitch">';
+        $html = '<div class="content-onoffswitch"><div class="onoffswitch">';
 
         $html.='<input type="checkbox" name="'.$name.'" class="onoffswitch-checkbox" id="'.$id.'"';
         if($value) $html.='checked';

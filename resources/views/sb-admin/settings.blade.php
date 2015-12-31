@@ -16,8 +16,8 @@
             <div class="col-lg-6">
                 {!! Form::model($settings, ['route' => ['user.updatesettings', $user->id], 'role'=>'form', 'id'=> 'form-user-settings']) !!}
 
-                {!! \App\Library\DiGiuDevForm::onofswitch('localization', $settings->localization) !!}
-                {!! \App\Library\DiGiuDevForm::onofswitch('visible', $settings->visible) !!}
+                {!! \App\Library\DiGiuDevForm::onofswitch('localization', $settings->localization, trans('settings.localization')) !!}
+                {!! \App\Library\DiGiuDevForm::onofswitch('visible', $settings->visible, trans('settings.visible')) !!}
                 <input type="hidden" name="id_user" value="<?php echo $user->id ?>">
                 {!! Form::submit(trans('settings.submit')) !!}
 

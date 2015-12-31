@@ -53,6 +53,33 @@
     {!! $validator !!}
     <?php }?>
 
+    <?php if ($dataTable) {?>
+            <!-- Laravel Javascript Validation -->
+    <script type="text/javascript" src="{{ asset('resources/views/sb-admin/bower_components/datatables/media/js/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('resources/views/sb-admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dataTables-example').DataTable({
+                responsive: true,
+                language: {
+                    "lengthMenu": "{{ trans('admin.dataTable_lengthMenu') }}",
+                    "zeroRecords": "{{ trans('admin.dataTable_zeroRecords') }}",
+                    "info": "{{ trans('admin.dataTable_info') }}",
+                    "infoEmpty": "{{ trans('admin.dataTable_infoEmpty') }}",
+                    "infoFiltered": "{{ trans('admin.dataTable_infoFiltered') }}",
+                    "search": "{{ trans('admin.dataTable_search') }}",
+                    "paginate": {
+                        "first":      "{{ trans('admin.dataTable_paginate_first') }}",
+                        "last":       "{{ trans('admin.dataTable_paginate_last') }}",
+                        "next":       "{{ trans('admin.dataTable_paginate_next') }}",
+                        "previous":   "{{ trans('admin.dataTable_paginate_previous') }}"
+                    },
+                }
+            });
+        });
+    </script>
+    <?php }?>
+
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="{{ URL::asset(SBADMIN.'bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>

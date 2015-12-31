@@ -75,7 +75,10 @@ Route::group(
 
 		Route::get('admin/listbreeders', array('as' => 'breeders.list', function() {
 			return view('sb-admin.listbreeders')
-				->with(['list' => app('App\Http\Controllers\Breeders')->getListBreeders()]);
+				->with([
+					'list' => app('App\Http\Controllers\Breeders')->getListBreeders(),
+					'dataTable' => true
+				]);
 		}));
 
 		// In POST vengono passati tutti i dati del form che vengono poi girati al validator

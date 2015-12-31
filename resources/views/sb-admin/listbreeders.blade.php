@@ -2,6 +2,8 @@
 @section('page_heading',trans('breeders.title'))
 @section('section')
 
+    {!! Html::style('resources/views/sb-admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') !!}
+    {!! Html::style('resources/views/sb-admin/bower_components/datatables-responsive/css/dataTables.responsive.css') !!}
     <div class="col-sm-12">
         <div class="row">
             <div class="col-lg-12">
@@ -12,27 +14,7 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="dataTables_length" id="dataTables-example_length">
-                                        <label>{{ trans('breeders.number_shows')}} <select
-                                                    name="dataTables-example_length" aria-controls="dataTables-example"
-                                                    class="form-control input-sm">
-                                                <option value="10">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select> entries</label></div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div id="dataTables-example_filter" class="dataTables_filter">
-                                        <label>{{ trans('breeders.search')}}<input type="search"
-                                                                                   class="form-control input-sm"
-                                                                                   placeholder=""
-                                                                                   aria-controls="dataTables-example"></label>
-                                    </div>
-                                </div>
-                            </div>
+
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                 <tr>
@@ -59,4 +41,9 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
+        <!-- Scripts -->
+{{--
+    {!! Html::script('resources/views/sb-admin/bower_components/datatables/media/js/jquery.dataTables.min.js') !!}
+    {!! Html::script('resources/views/sb-admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js') !!}
+    --}}
 @stop

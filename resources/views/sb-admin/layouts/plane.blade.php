@@ -51,13 +51,14 @@
             <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ asset('public/vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! $validator !!}
-    <?php }?>
+    <?php } ?>
 
-    <?php if (isset($dataTable) && $dataTable) {?>
+    <?php
+    if (isset($dataTable) && $dataTable) {?>
             <!-- Laravel Javascript Validation -->
-    <script type="text/javascript" src="{{ asset('resources/views/sb-admin/bower_components/datatables/media/js/jquery.dataTables.min.js')}}"></script>
+    {{--<script type="text/javascript" src="{{ asset('resources/views/sb-admin/bower_components/datatables/media/js/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('resources/views/sb-admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js')}}"></script>
-    <script>
+    --}}<script>
         $(document).ready(function() {
             $('#dataTables-example').DataTable({
                 responsive: true,
@@ -80,7 +81,12 @@
     </script>
     <?php }?>
 
-
+    <?php
+    if (isset($customjs))
+        foreach($customjs as $js){
+        ?>
+        <script type="text/javascript" src="{{ asset($js)}}"></script>';
+    <?php } ?>
     <!-- Metis Menu Plugin JavaScript -->
     <script src="{{ URL::asset(SBADMIN.'bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
 

@@ -77,7 +77,12 @@ Route::group(
 			return view('sb-admin.listbreeders')
 				->with([
 					'list' => app('App\Http\Controllers\Breeders')->getListBreeders(),
-					'dataTable' => true
+					'dataTable' => true,
+					'customjs' => [
+						'resources/views/sb-admin/bower_components/datatables/media/js/jquery.dataTables.min.js',
+						'resources/views/sb-admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js',
+						'resources/views/sb-admin/js/listbreeders.js'
+					]
 				]);
 		}));
 
@@ -88,8 +93,15 @@ Route::group(
 			return view('sb-admin.areas')
 				->with([
 					'list' => app('App\Http\Controllers\Positions')->getListOfArea(),
-					'dataTable' => true
-				]);
+					'dataTable' => false,
+					'customjs' => [
+						'resources/views/sb-admin/bower_components/datatables-1.10/js/jquery.dataTables.min.js',
+						'resources/views/sb-admin/bower_components/datatables-1.10/js/dataTables.bootstrap.min.js',
+						'resources/views/sb-admin/bower_components/datatables-plugins/dataTables.buttons.min.js',
+						'resources/views/sb-admin/bower_components/datatables-plugins/dataTables.select.min.js',
+						'resources/views/sb-admin/bower_components/datatables-editor/js/dataTables.editor.min.js',
+						'resources/views/sb-admin/js/custom.js'
+					]]);
 		}));
 
 		// In POST vengono passati tutti i dati del form che vengono poi girati al validator

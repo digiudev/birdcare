@@ -160,7 +160,7 @@ class UserController extends Controller
 		$this->idUser = (int)$user->id;
 		$settings = $this->getSettings();
 		if($settings === null)
-			$this->createDefaultSetting();
+			$settings = $this->createDefaultSetting();
 
 		return [
 			'settings' => $settings,
@@ -173,11 +173,12 @@ class UserController extends Controller
 		if($idUser!='')
 			$this->idUser = $idUser;
 
-		return DB::table('settings')->insert([
+		DB::table('settings')->insert([
 			'id_user' => $this->idUser,
 			'localization' => 0,
 			'visible' => 0
 		]);
+		return DB::table('settings')->where('id_user', (int)$this->idUser)->first();
 	}
 
 	public function getSettings()

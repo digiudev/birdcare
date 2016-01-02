@@ -6,8 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CreateAreas' => $baseDir . '/database/migrations/2016_01_02_104334_create_areas.php',
+    'CreateBirds' => $baseDir . '/database/migrations/2016_01_02_101956_create_birds.php',
+    'CreateCages' => $baseDir . '/database/migrations/2016_01_02_102748_create_cages.php',
     'CreateCountriesTable' => $baseDir . '/database/migrations/2015_12_24_100502_create_countries_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreatePositions' => $baseDir . '/database/migrations/2016_01_02_103956_create_positions.php',
     'CreateSettingsTable' => $baseDir . '/database/migrations/2015_12_29_111814_create_settings_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',

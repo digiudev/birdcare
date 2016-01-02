@@ -53,7 +53,7 @@
     {!! $validator !!}
     <?php }?>
 
-    <?php if ($dataTable) {?>
+    <?php if (isset($dataTable) && $dataTable) {?>
             <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ asset('resources/views/sb-admin/bower_components/datatables/media/js/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('resources/views/sb-admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js')}}"></script>

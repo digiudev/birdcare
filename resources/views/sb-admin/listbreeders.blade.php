@@ -13,9 +13,9 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <div class="dataTable_wrapper">
+                        <div>
 
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-bordered table-hover order-column" id="dataTables-example">
                                 <thead>
                                 <tr>
                                     <th>{{ trans('breeders.col_name')}}</th>
@@ -24,13 +24,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="gradeA">
+
                                     @foreach ($list as $user)
+                                        <tr>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->RNA}}</td>
                                         <td>{{$user->breeding_name}}</td>
+                                        </tr>
                                     @endforeach
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>

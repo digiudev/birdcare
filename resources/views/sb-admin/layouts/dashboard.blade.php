@@ -263,6 +263,9 @@
                         <li {{ (Request::is('admin/listbreeders') ? 'class="active"' : '') }}>
                             <a href="{{ url ('admin/listbreeders') }}"><i class="fa fa-users  fa-fw"></i> {{ trans('breeders.title') }}</a>
                         </li>
+                        <li {{ (Request::is('admin/areas') ? 'class="active"' : '') }}>
+                            <a href="{{ url ('admin/areas') }}"><i class="fa fa-users  fa-fw"></i> {{ trans('areas.title') }}</a>
+                        </li>
                         {{--<li {{ (Request::is('*charts') ? 'class="active"' : '') }}>
                             <a href="{{ url ('admin/charts') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Charts</a>
                             <!-- /.nav-second-level -->

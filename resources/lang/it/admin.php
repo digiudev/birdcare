@@ -16,5 +16,8 @@ return [
     'dataTable_paginate_first' =>  "Pima",
     'dataTable_paginate_last' =>  "Ultima",
     'dataTable_paginate_next' =>  "Pros.",
-    'dataTable_paginate_previous' =>  "Prec."
+    'dataTable_paginate_previous' =>  "Prec.",
+    'dataTable_newRecord' =>  "Nuovo",
+    'dataTable_editRecord' =>  "Modifica",
+    'dataTable_deleteRecord' =>  "Cancella"
 ];

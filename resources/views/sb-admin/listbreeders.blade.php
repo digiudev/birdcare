@@ -43,7 +43,9 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
+        </div>
         <!-- Scripts -->
+
 {{--
     {!! Html::script('resources/views/sb-admin/bower_components/datatables/media/js/jquery.dataTables.min.js') !!}
     {!! Html::script('resources/views/sb-admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js') !!}

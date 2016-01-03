@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-use App\Http\Controllers\Countries;
 use Illuminate\Support\Facades\Route;
 
 Route::group(
@@ -36,12 +35,12 @@ Route::group(
 			'as' => 'profile', 'uses' => 'UserController@showProfile'
 		]);
 
-// Authentication routes...
+        // Authentication routes...
 		Route::get('auth/login', 'Auth\AuthController@getLogin');
 		Route::post('auth/login', 'Auth\AuthController@postLogin');
 		Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-// Registration routes...
+        // Registration routes...
 		Route::get('auth/register', 'Auth\AuthController@getRegister');
 		Route::post('auth/register', 'Auth\AuthController@postRegister');
 
@@ -62,6 +61,7 @@ Route::group(
 			return view('sb-admin.userprofile')
 				->with(app('App\Http\Controllers\UserController')->editProfile());
 		}));
+
 		// In POST vengono passati tutti i dati del form che vengono poi girati al validator
 		Route::post('admin/userprofile', 'UserController@updateDataProfile');
 
@@ -69,6 +69,7 @@ Route::group(
 			return view('sb-admin.settings')
 				->with(app('App\Http\Controllers\UserController')->editSettings());
 		}));
+
 		// In POST vengono passati tutti i dati del form che vengono poi girati al validator
 		Route::post('admin/settings', 'UserController@updateDataSettings');
 
@@ -94,20 +95,17 @@ Route::group(
 				->with([
 					'list' => app('App\Http\Controllers\Positions')->getListOfArea(),
 					'dataTable' => false,
-					'customjs' => [
-						'resources/views/sb-admin/bower_components/datatables-1.10/js/jquery.dataTables.min.js',
-						'resources/views/sb-admin/bower_components/datatables-1.10/js/dataTables.bootstrap.min.js',
-						'resources/views/sb-admin/bower_components/datatables-plugins/dataTables.buttons.min.js',
-						'resources/views/sb-admin/bower_components/datatables-plugins/dataTables.select.min.js',
-						'resources/views/sb-admin/bower_components/datatables-editor/js/dataTables.editor.min.js',
-						'resources/views/sb-admin/js/custom.js'
-					]]);
+					]);
 		}));
 
 		// In POST vengono passati tutti i dati del form che vengono poi girati al validator
 		Route::post('admin/areas', 'UserController@updateDataProfile');
 
 	});
+
+Route::post('/admin/editareas', 'Positions@editAreas');
+
+Route::get('/admin/editareas', 'Positions@getJsonAreas');
 
 Route::post('/admin/mylocation', 'MyLocation@myLocation');
 

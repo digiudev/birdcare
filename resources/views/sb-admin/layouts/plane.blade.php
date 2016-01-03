@@ -29,6 +29,15 @@
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="{{ URL::asset(SBADMIN.'bower_components/font-awesome/css/font-awesome.min.css') }}">
 
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+    <?php if (isset($validator)) {?>
+            <!-- Laravel Javascript Validation -->
+    <script type="text/javascript" src="{{ asset('public/vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! $validator !!}
+    <?php } ?>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -45,13 +54,8 @@
     <!-- Bootstrap Core JavaScript -->
     <!--  <script src="{{ URL::asset(SBADMIN.'bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- Scripts -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <?php if (isset($validator)) {?>
-            <!-- Laravel Javascript Validation -->
-    <script type="text/javascript" src="{{ asset('public/vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! $validator !!}
-    <?php } ?>
+
+
 
     <?php
     if (isset($dataTable) && $dataTable) {?>
@@ -88,7 +92,7 @@
         <script type="text/javascript" src="{{ asset($js)}}"></script>';
     <?php } ?>
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{ URL::asset(SBADMIN.'bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
+    {{--<script src="{{ URL::asset(SBADMIN.'bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
 
     <!-- Morris Charts JavaScript -->
     <script src="{{ URL::asset(SBADMIN.'bower_components/raphael/raphael-min.js') }}"></script>

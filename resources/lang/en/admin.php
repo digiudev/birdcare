@@ -16,5 +16,8 @@ return [
     'dataTable_paginate_first' =>  "First",
     'dataTable_paginate_last' =>  "Last",
     'dataTable_paginate_next' =>  "Next",
-    'dataTable_paginate_previous' =>  "Previous"
+    'dataTable_paginate_previous' =>  "Previous",
+    'dataTable_newRecord' =>  "New",
+    'dataTable_editRecord' =>  "Edit",
+    'dataTable_deleteRecord' =>  "Delete"
 ];

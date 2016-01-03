@@ -3,7 +3,7 @@
 @section('section')
 
     {!! Html::style('resources/views/sb-admin/bower_components/datatables-1.10/css/dataTables.bootstrap.min.css') !!}
-    {!! Html::style('resources/views/sb-admin/bower_components/datatables-1.10/css/jquery.dataTables.min.css') !!}
+    {{--{!! Html::style('resources/views/sb-admin/bower_components/datatables-1.10/css/jquery.dataTables.min.css') !!} --}}
     {!! Html::style('resources/views/sb-admin/bower_components/datatables-editor/css/editor.dataTables.min.css') !!}
     {!! Html::style('resources/views/sb-admin/bower_components/Buttons-1.1.0/css/buttons.dataTables.min.css') !!}
     {!! Html::style('resources/views/sb-admin/bower_components/Select-1.1.0/css/select.dataTables.min.css') !!}
@@ -12,7 +12,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        {{ trans('breeders.title_box_table')}}
+                        {{ trans('areas.title_box_table')}}
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
@@ -35,23 +35,7 @@
                                 </tbody>
                             </table>
                             <input type="hidden" id="_token" value="{{ csrf_token()}}" />
-                            <script>
-                                var dataTableLabel={
-                                    newRecord: "{{ trans('admin.dataTable_newRecord') }}",
-                                    editRecord: "{{ trans('admin.dataTable_editRecord') }}",
-                                    deleteRecord:"{{ trans('admin.dataTable_deleteRecord') }}",
-                                    lengthMenu:"{{ trans('admin.dataTable_lengthMenu') }}",
-                                    zeroRecords:"{{ trans('admin.dataTable_zeroRecords') }}",
-                                    info:"{{ trans('admin.dataTable_info') }}",
-                                    infoEmpty:"{{ trans('admin.dataTable_infoEmpty') }}",
-                                    infoFiltered:"{{ trans('admin.dataTable_infoFiltered') }}",
-                                    search:"{{ trans('admin.dataTable_search') }}",
-                                    paginate_first:"{{ trans('admin.dataTable_paginate_first') }}",
-                                    paginate_last:"{{ trans('admin.dataTable_paginate_last') }}",
-                                    paginate_next:"{{ trans('admin.dataTable_paginate_next') }}",
-                                    paginate_previous:"{{ trans('admin.dataTable_paginate_previous') }}"
-                                };
-                            </script>
+                            @include('sb-admin.incl.dataTablesScript')
                             <input type="hidden" id="txt-newbutton" value="{{ trans('admin.dataTable_newRecord') }}" />
                             <input type="hidden" id="txt-editbutton" value="{{ trans('admin.dataTable_editRecord') }}" />
                             <input type="hidden" id="txt-deletebutton" value="{{ trans('admin.dataTable_deleteRecord') }}" />

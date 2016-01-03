@@ -3,6 +3,8 @@ var dataTableLabel;
 
     $(document).ready(function() {
 
+        jQuery('.navbar-static-top').css('z-index', 0);
+
         editor = new $.fn.dataTable.Editor( {
             ajax: "/admin/editareas",
             table: "#example",

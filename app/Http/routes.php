@@ -98,14 +98,23 @@ Route::group(
 					]);
 		}));
 
-		// In POST vengono passati tutti i dati del form che vengono poi girati al validator
-		Route::post('admin/areas', 'UserController@updateDataProfile');
+		Route::get('admin/zones', array('as' => 'breeders.zones', function() {
+			return view('sb-admin.zones')
+				->with([
+					'list' => app('App\Http\Controllers\Positions')->getListOfZones(),
+					'dataTable' => false,
+				]);
+		}));
 
 	});
 
 Route::post('/admin/editareas', 'Positions@editAreas');
 
 Route::get('/admin/editareas', 'Positions@getJsonAreas');
+
+Route::post('/admin/editzones', 'Positions@editZones');
+
+Route::get('/admin/editzones', 'Positions@getJsonZones');
 
 Route::post('/admin/mylocation', 'MyLocation@myLocation');
 

@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 class Positions extends Controller
 {
@@ -21,46 +23,59 @@ class Positions extends Controller
 
     public function editAreas()
     {
+        // Costruisco i campi richiesti
+        $rules = ['name' => 'required'];
+
+        // Recupero le infromazioni dell'utente
         $user = Auth::user()->getAttributes();
+
+        //  NEW Area
         if($_POST['action']=='create')
         {
             $dati = $_POST['data'][0];
 
-            $ret['data'][] = ['name' => $dati['name'], 'DT_RowId' =>   "row_".DB::table('areas')->count()];
-            DB::table('areas')->insert(['name' => $dati['name'], 'id_user'=>$user['id']]);
+            // Valido i dati
+            $valid = $this->validateData($dati, $rules);
+            if($valid!==true) return $valid;
+
+            $id = DB::table('areas')->insertGetId(['name' => $dati['name'], 'id_user'=>$user['id']]);
+            // Se tutto ok inserisco
+            $ret['data'][] = ['name' => $dati['name'], 'DT_RowId' =>   "row_".$id];
+
             return json_encode($ret);
         }
+
+        // Edit Area
         elseif($_POST['action'] == 'edit')
         {
-            $areas = $ret = [];
-            foreach($_POST['data'] as $k=>$area) {
-                $dato = [];
-                $dato['id'] = (int)str_replace('row_', '', $k);
-                $dato['name'] = $area['name'];
-                $areas[] = $dato;
-            }
+            $ret = [];
 
-            foreach($areas as $area) {
+            foreach($_POST['data'] as $k=>$area) {
+
+                // Valido i dati
+                $valid = $this->validateData($area, $rules);
+                if($valid!==true) return $valid;
+
+                $id = (int)str_replace('row_', '', $k);
+
+                // Se tutto ok modifico
                 DB::table('areas')
-                    ->where('id', $area['id'])
+                    ->where('id', $id)
                     ->update(['name' => $area['name']]);
 
-                $row = ['DT_RowId' => "row_".$area['id'], 'name' => $area['name']];
+                $row = ['DT_RowId' => "row_".$id, 'name' => $area['name']];
                 $ret['data'][] = $row;
             }
+
             return json_encode($ret);
         }
         elseif($_POST['action'] == 'remove')
         {
-            $areas = $ret = [];
+            $ret = [];
             foreach($_POST['data'] as $k=>$area) {
-                $dato = [];
-                $dato['id'] = (int)str_replace('row_', '', $k);
-                $areas[] = $dato;
-            }
-            foreach($areas as $area) {
+
                 DB::table('areas')
-                    ->where('id', $area['id'])
+                    ->where('id', (int)str_replace('row_', '', $k))
                     ->delete();
 
                 $ret['data'] = [];
@@ -70,6 +85,20 @@ class Positions extends Controller
         }
     }
 
+    public function validateData($input, $rules)
+    {
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) {
+
+            $ret = [];
+            $ret['data'] = [];
+            foreach($validator->getMessageBag()->getMessages() as $field=>$message)
+                $ret['fieldErrors'][] = ['name'=>$field, 'status' => $message];
+
+            return json_encode($ret);
+        }
+        return true;
+    }
     public function getJsonAreas(){
 
         $lists = $this->getListOfArea();

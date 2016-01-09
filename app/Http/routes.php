@@ -102,6 +102,7 @@ Route::group(
 			return view('sb-admin.zones')
 				->with([
 					'list' => app('App\Http\Controllers\Positions')->getListOfZones(),
+					'list_areas' => app('App\Http\Controllers\Positions')->getJsonAreasForInsert(),
 					'dataTable' => false,
 				]);
 		}));
@@ -115,6 +116,8 @@ Route::get('/admin/editareas', 'Positions@getJsonAreas');
 Route::post('/admin/editzones', 'Positions@editZones');
 
 Route::get('/admin/editzones', 'Positions@getJsonZones');
+
+Route::get('/admin/getjsonarea', 'Positions@getJsonAreasForInsert');
 
 Route::post('/admin/mylocation', 'MyLocation@myLocation');
 

@@ -134,7 +134,7 @@ class Positions extends Controller
     public function editZones()
     {
         // Costruisco i campi richiesti
-        $rules = ['name' => 'required'];
+        $rules = ['id_area' => 'required', 'name' => 'required'];
 
         // Recupero le infromazioni dell'utente
         $user = Auth::user()->getAttributes();
@@ -148,9 +148,12 @@ class Positions extends Controller
             $valid = $this->validateData($dati, $rules);
             if($valid!==true) return $valid;
 
-            $id = DB::table('areas')->insertGetId(['name' => $dati['name'], 'id_user'=>$user['id']]);
+            $id = DB::table('positions')->insertGetId(['name' => $dati['name'], 'id_area'=>$dati['id_area'], 'id_user'=>$user['id']]);
+
+            $area = $this->getAreaByID($dati['id_area']);
+
             // Se tutto ok inserisco
-            $ret['data'][] = ['name' => $dati['name'], 'DT_RowId' =>   "row_".$id];
+            $ret['data'][] = ['name' => $dati['name'], 'area_name' => $area->name, 'DT_RowId' =>   "row_".$id];
 
             return json_encode($ret);
         }
@@ -160,20 +163,22 @@ class Positions extends Controller
         {
             $ret = [];
 
-            foreach($_POST['data'] as $k=>$area) {
+            foreach($_POST['data'] as $k=>$dati) {
 
                 // Valido i dati
-                $valid = $this->validateData($area, $rules);
+                $valid = $this->validateData($dati, $rules);
                 if($valid!==true) return $valid;
 
                 $id = (int)str_replace('row_', '', $k);
 
-                // Se tutto ok modifico
-                DB::table('areas')
-                    ->where('id', $id)
-                    ->update(['name' => $area['name']]);
+                $area = $this->getAreaByID($dati['id_area']);
 
-                $row = ['DT_RowId' => "row_".$id, 'name' => $area['name']];
+                // Se tutto ok modifico
+                DB::table('positions')
+                    ->where('id', $id)
+                    ->update(['name' => $dati['name'], 'id_area' => $dati['id_area']]);
+
+                $row = ['DT_RowId' => "row_".$id, 'name' => $dati['name'], 'area_name' => $area->name];
                 $ret['data'][] = $row;
             }
 
@@ -182,9 +187,9 @@ class Positions extends Controller
         elseif($_POST['action'] == 'remove')
         {
             $ret = [];
-            foreach($_POST['data'] as $k=>$area) {
+            foreach($_POST['data'] as $k=>$dato) {
 
-                DB::table('areas')
+                DB::table('positions')
                     ->where('id', (int)str_replace('row_', '', $k))
                     ->delete();
 
@@ -207,6 +212,21 @@ class Positions extends Controller
             $new['area_name'] = $zona->area_name;
             $new['name'] = $zona->name;
             $list['data'][] = $new;
+        }
+        return json_encode($list);
+    }
+
+    public function getJsonAreasForInsert(){
+
+        $lists = $this->getListOfArea();
+
+        $list = [];
+        foreach($lists as $area)
+        {
+            $new = [];
+            $new['label'] = $area->name;
+            $new['value'] = $area->id;
+            $list[] = $new;
         }
         return json_encode($list);
     }

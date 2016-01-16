@@ -17,7 +17,7 @@
                     <div class="panel-body">
                         <div>
 
-                            <table class="table table-bordered table-hover order-column" id="tbl_zones">
+                            <table class="table table-bordered table-hover order-column" id="tbl_zones" width="100%">
                                 <thead>
                                     <tr>
                                         <th>{{ trans('zones.area_name')}}</th>

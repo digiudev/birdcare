@@ -15,7 +15,7 @@
                     <div class="panel-body">
                         <div>
 
-                            <table class="table table-bordered table-hover order-column" id="dataTables-example">
+                            <table class="table table-bordered table-hover order-column" id="dataTables-example" width="100%">
                                 <thead>
                                 <tr>
                                     <th>{{ trans('breeders.col_name')}}</th>

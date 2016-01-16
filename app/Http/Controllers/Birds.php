@@ -19,7 +19,11 @@ class Birds extends Controller
        foreach($birds as $bird)
        {
            $bird->rna_padre = $this->getRnaByID($bird->id_padre);
-           $bird->rna_madre = $this->getRnaByID($bird->id_madre);;
+           $bird->rna_madre = $this->getRnaByID($bird->id_madre);
+
+           // Todo: dovrei mettere una impostazione per il formato data
+           if($bird->date_born>0) $bird->date_born = date('Y-d-m', $bird->date_born);
+           if($bird->date_sale>0) $bird->date_sale = date('Y-d-m', $bird->date_sale);
        }
        return $birds;
    }

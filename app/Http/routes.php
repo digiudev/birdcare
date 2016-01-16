@@ -95,7 +95,7 @@ Route::group(
 					'customjs' => [
 						'resources/views/sb-admin/bower_components/datatables/media/js/jquery.dataTables.min.js',
 						'resources/views/sb-admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js',
-						'resources/views/sb-admin/js/listbreeders.js'
+						'resources/views/sb-admin/js/listbirds.js'
 					]
 				]);
 		}));

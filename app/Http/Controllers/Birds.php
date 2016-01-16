@@ -3,7 +3,11 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Lang;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class Birds extends Controller
 {
@@ -48,8 +52,14 @@ class Birds extends Controller
             $new['number'] = $bird->number;
             $new['sex'] = $bird->sex;
             $new['genere_specie'] = $bird->genere.'<br />'.$bird->specie;
-            $new['rna_padre'] = $bird->rna_padre;
-            $new['rna_madre'] = $bird->rna_madre;
+            $new['rna_padre'] =  $bird->rna_padre;
+            $new['rna_madre'] =  $bird->rna_madre;
+            $parents = [];
+            if($bird->rna_padre!='')
+                $parents[] = Lang::get('birds.col_padre').':'.$new['rna_padre'];
+            if($bird->rna_madre!='')
+                $parents[] = Lang::get('birds.col_madre').':'. $new['rna_madre'];
+            $new['rna_padre_madre'] = implode('<br />', $parents);
             $new['cage_name'] = $bird->cage_name;
             $new['date_born'] = $bird->date_born;
             $new['date_sale'] = $bird->date_sale;

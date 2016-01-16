@@ -122,6 +122,8 @@ Route::group(
 				]);
 		}));
 
+		Route::get('/admin/getListBirds', 'Birds@getJsonListUserBirds');
+
 	});
 
 Route::post('/admin/editareas', 'Positions@editAreas');
@@ -132,7 +134,7 @@ Route::post('/admin/editzones', 'Positions@editZones');
 
 Route::get('/admin/editzones', 'Positions@getJsonZones');
 
-Route::get('/admin/getListBirds', 'Birds@getJsonListUserBirds');
+
 
 Route::get('/admin/getjsonarea', 'Positions@getJsonAreasForInsert');
 

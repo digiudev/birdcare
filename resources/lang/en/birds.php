@@ -8,6 +8,7 @@ return [
     'col_specie' => 'Type',
     'col_padre' => 'Dad',
     'col_madre' => 'Mum',
+    'col_genitori' => 'Parents',
     'col_cage' => 'Cage',
     'col_dateborn' => 'Born date'
 ];

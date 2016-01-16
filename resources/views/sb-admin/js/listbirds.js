@@ -1,13 +1,15 @@
 // Setup - add a text input to each footer cell
+var dataTableLabel;
+
 $(document).ready(function () {
-    console.log('ciao');
-    jQuery('#dataTables-birds tfoot th').each(function () {
+
+    $('#dataTables-birds tfoot th').each(function () {
         var title = $(this).text();
         if (title != '')
-            $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            $(this).html('<input type="text" placeholder=" '+ dataTableLabel.search +' ' + title + '" />');
     });
 
-    var table = jQuery('#dataTables-birds').DataTable({
+    var table = $('#dataTables-birds').DataTable({
         "ajax": "/admin/getListBirds",
         "columns": [
             {
@@ -19,11 +21,24 @@ $(document).ready(function () {
             {"data": "number"},
             {"data": "sex"},
             {"data": "genere_specie"},
-            {"data": "rna_padre"},
-            {"data": "rna_madre"},
+            {"data": "rna_padre_madre"},
             {"data": "cage_name"},
             {"data": "date_born"}
         ],
+        "language": {
+            "lengthMenu": dataTableLabel.lengthMenu,
+            "zeroRecords": dataTableLabel.zeroRecords,
+            "info": dataTableLabel.info,
+            "infoEmpty": dataTableLabel.infoEmpty,
+            "infoFiltered": dataTableLabel.infoFiltered,
+            "search": dataTableLabel.search,
+            "paginate": {
+                "first": dataTableLabel.paginate_first,
+                "last": dataTableLabel.paginate_last,
+                "next": dataTableLabel.paginate_next,
+                "previous": dataTableLabel.paginate_previous
+            }
+        },
         "order": [[5, 'asc']],
         "stateSave": true // salva l'ordinamento e i filtri in sessione
     });
@@ -59,19 +74,33 @@ $(document).ready(function () {
     });
 });
 
-/* Formatting function for row details - modify as you need */
+/**
+ * Funzione che viene chiamata per mostrare i dati extra del record
+ * altrimenti non ci starebbero tutti in un unico
+ * @param data
+ * @returns {string}
+ */
 function format(data) {
-    // `d` is the original data object for the row
+
     var string = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
     var fields = [
+                    ['Padre', data.rna_padre],
+                    ['Madre', data.rna_madre],
                     ['Date Born', data.date_born],
                     ['Date Sale', data.date_sale],
                     ['Note', data.note]
                 ];
-    return string+getDataFormat(fields)+'</table>';
+
+    return string + getDataExtra(fields) + '</table>';
 }
 
-function getDataFormat(dati)
+/**
+ * Recupera i dati per popolare la tabella con le informazioni extra
+ * Ritorna i record della tabella
+ * @param dati
+ * @returns {string}
+ */
+function getDataExtra(dati)
 {
     var string = '';
     dati.forEach(function(dato) {

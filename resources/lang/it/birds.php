@@ -8,6 +8,7 @@ return [
     'col_specie' => 'Specie',
     'col_padre' => 'Padre',
     'col_madre' => 'Madre',
+    'col_genitori' => 'Genitori',
     'col_cage' => 'Gabbia',
-    'col_dateborn' => 'data di nascita'
+    'col_dateborn' => 'Data di nascita'
 ];

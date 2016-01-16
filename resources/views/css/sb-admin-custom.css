@@ -64,23 +64,24 @@ tfoot {
 td.details-control {
     padding-left: 32px;
     position: relative;
-
+    min-width:60px;
 }
 td.details-control:before {
     content: "\f067";
     font-family: 'FontAwesome';
-    left:5px;
+    left:25px;
     position:absolute;
     cursor: pointer;
 }
 tr.shown td.details-control{
     padding-left: 50px;
     position: relative;
+    min-width:60px;
 }
 tr.shown td.details-control:before {
     content: "\f068";
     font-family: 'FontAwesome';
-    left:5px;
+    left:25px;
     position:absolute;
     cursor: pointer;
 }

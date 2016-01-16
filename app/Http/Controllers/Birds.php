@@ -35,4 +35,27 @@ class Birds extends Controller
             return $bird->number;
         return '';
     }
+
+    public function getjsonListUserBirds(){
+
+        $lists = $this->getListUserBirds();
+
+        $list = [];
+        foreach($lists as $bird)
+        {
+            $new = [];
+            $new['DT_RowId'] = "row_".$bird->id;
+            $new['number'] = $bird->number;
+            $new['sex'] = $bird->sex;
+            $new['genere_specie'] = $bird->genere.'<br />'.$bird->specie;
+            $new['rna_padre'] = $bird->rna_padre;
+            $new['rna_madre'] = $bird->rna_madre;
+            $new['cage_name'] = $bird->cage_name;
+            $new['date_born'] = $bird->date_born;
+            $new['date_sale'] = $bird->date_sale;
+            $new['note'] = $bird->note;
+            $list['data'][] = $new;
+        }
+        return json_encode($list);
+    }
 }

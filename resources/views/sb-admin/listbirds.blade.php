@@ -2,11 +2,11 @@
 @section('page_heading',trans('birds.title'))
 @section('section')
 
-   {{-- {!! Html::style('resources/views/sb-admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') !!}
-    {!! Html::style('resources/views/sb-admin/bower_components/datatables-responsive/css/dataTables.responsive.css') !!}
-    --}}
-   {!! Html::style('resources/views/css/sb-admin-custom.css') !!}
-   <div class="col-sm-12">
+    {{-- {!! Html::style('resources/views/sb-admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') !!}
+     {!! Html::style('resources/views/sb-admin/bower_components/datatables-responsive/css/dataTables.responsive.css') !!}
+     --}}
+    {!! Html::style('resources/views/css/sb-admin-custom.css') !!}
+    <div class="col-sm-12">
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -16,7 +16,8 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div>
-                            <table class="table table-bordered table-hover order-column" id="dataTables-birds" data-order="[[ 5, &quot;asc&quot; ]]" width="100%">
+                            <table class="table table-bordered table-hover order-column" id="dataTables-birds"
+                                   width="100%">
                                 <thead>
                                 <tr>
                                     <th></th>
@@ -41,7 +42,7 @@
                                     <th>{{ trans('birds.col_dateborn')}}</th>
                                 </tr>
                                 </tfoot>
-                                <tbody>
+                                {{--<tbody>
 
                                     @foreach ($list as $birds)
                                         <tr>
@@ -60,7 +61,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($birds->rna_padre!='')
+                                                @if ($birds->rna_madre!='')
                                                     {{$birds->rna_madre}}
                                                 @else
                                                     --
@@ -71,7 +72,7 @@
                                         </tr>
                                     @endforeach
 
-                                </tbody>
+                                </tbody>--}}
                             </table>
                         </div>
                     </div>
@@ -81,5 +82,5 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
-        </div>
+    </div>
 @stop

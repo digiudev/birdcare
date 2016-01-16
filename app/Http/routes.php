@@ -132,6 +132,8 @@ Route::post('/admin/editzones', 'Positions@editZones');
 
 Route::get('/admin/editzones', 'Positions@getJsonZones');
 
+Route::get('/admin/getListBirds', 'Birds@getJsonListUserBirds');
+
 Route::get('/admin/getjsonarea', 'Positions@getJsonAreasForInsert');
 
 Route::post('/admin/mylocation', 'MyLocation@myLocation');

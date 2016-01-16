@@ -32,10 +32,13 @@
                                         <tr>
                                         <td>{{$birds->number}}</td>
                                         <td>{{$birds->sex}}</td>
-                                            <td>{{$birds->id_specie}}</td>
+                                            <td>
+                                                {{$birds->genere}}<br />
+                                                {{$birds->specie}}
+                                            </td>
                                             <td>{{$birds->rna_padre}}</td>
                                             <td>{{$birds->rna_madre}}</td>
-                                            <td>{{$birds->id_cage}}</td>
+                                            <td>{{$birds->cage_name}}</td>
                                             <td>{{$birds->date_born}}</td>
                                         </tr>
                                     @endforeach

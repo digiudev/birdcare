@@ -12,7 +12,10 @@ class Birds extends Controller
    {
        $user = Auth::user();
        $birds =  DB::table('birds')
-           ->where('id_user', $user->id)->get();
+           ->where('birds.id_user', $user->id)
+           ->join('cages', 'birds.id_cage', '=', 'cages.id')
+           ->join('specie', 'birds.id_specie', '=', 'specie.id')
+           ->join('generi', 'specie.id_genere', '=', 'generi.id')->get();
        foreach($birds as $bird)
        {
            $bird->rna_padre = $this->getRnaByID($bird->id_padre);

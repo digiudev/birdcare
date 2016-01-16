@@ -17,6 +17,8 @@ return array(
     'CreateTableSpecie' => $baseDir . '/database/migrations/2016_01_16_085231_create_table_specie.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'EditTableCages' => $baseDir . '/database/migrations/2016_01_16_091056_edit_table_cages.php',
+    'EditTableSpecie' => $baseDir . '/database/migrations/2016_01_16_091636_edit_table_specie.php',
     'EditUserTable' => $baseDir . '/database/migrations/2015_12_24_102635_edit_user_table.php',
     'EditUserTable2' => $baseDir . '/database/migrations/2015_12_29_095958_edit_user_table_2.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',

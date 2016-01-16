@@ -266,6 +266,9 @@
                         <li {{ (Request::is('admin/listbirds') ? 'class="active"' : '') }}>
                             <a href="{{ url ('admin/listbirds') }}"><i class="fa fa-users  fa-fw"></i> {{ trans('birds.title') }}</a>
                         </li>
+                        <li {{ (Request::is('admin/cages') ? 'class="active"' : '') }}>
+                            <a href="{{ url ('admin/cages') }}"><i class="fa fa-users  fa-fw"></i> {{ trans('cages.title') }}</a>
+                        </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Areas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

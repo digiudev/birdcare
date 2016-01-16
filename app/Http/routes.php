@@ -122,6 +122,15 @@ Route::group(
 				]);
 		}));
 
+		Route::get('admin/cages', array('as' => 'breeders.cages', function() {
+			return view('sb-admin.cages')
+				->with([
+					'list' => app('App\Http\Controllers\Cages')->getListOfCages(),
+					'list_areas' => app('App\Http\Controllers\Positions')->getJsonAreasForInsert(),
+					'dataTable' => false,
+				]);
+		}));
+
 		Route::get('/admin/getListBirds', 'Birds@getJsonListUserBirds');
 
 	});
@@ -134,7 +143,9 @@ Route::post('/admin/editzones', 'Positions@editZones');
 
 Route::get('/admin/editzones', 'Positions@getJsonZones');
 
+Route::post('/admin/editcages', 'Cages@editCages');
 
+Route::get('/admin/editcages', 'Cages@getJsonCages');
 
 Route::get('/admin/getjsonarea', 'Positions@getJsonAreasForInsert');
 

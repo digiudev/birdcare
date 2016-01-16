@@ -131,6 +131,11 @@ class Positions extends Controller
         return DB::table('areas')->where('id', (int)$id)->first();
     }
 
+    public function getPositionByID($id)
+    {
+        return DB::table('positions')->where('id', (int)$id)->first();
+    }
+
     public function editZones()
     {
         // Costruisco i campi richiesti

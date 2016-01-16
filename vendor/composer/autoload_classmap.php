@@ -13,6 +13,8 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePositions' => $baseDir . '/database/migrations/2016_01_02_103956_create_positions.php',
     'CreateSettingsTable' => $baseDir . '/database/migrations/2015_12_29_111814_create_settings_table.php',
+    'CreateTableGeneri' => $baseDir . '/database/migrations/2016_01_16_085134_create_table_generi.php',
+    'CreateTableSpecie' => $baseDir . '/database/migrations/2016_01_16_085231_create_table_specie.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'EditUserTable' => $baseDir . '/database/migrations/2015_12_24_102635_edit_user_table.php',

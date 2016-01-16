@@ -87,8 +87,23 @@ Route::group(
 				]);
 		}));
 
+		Route::get('admin/listbirds', array('as' => 'birds.list', function() {
+			return view('sb-admin.listbirds')
+				->with([
+					'list' => app('App\Http\Controllers\Birds')->getListUserBirds(),
+					'dataTable' => true,
+					'customjs' => [
+						'resources/views/sb-admin/bower_components/datatables/media/js/jquery.dataTables.min.js',
+						'resources/views/sb-admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js',
+						'resources/views/sb-admin/js/listbreeders.js'
+					]
+				]);
+		}));
+
 		// In POST vengono passati tutti i dati del form che vengono poi girati al validator
 		Route::post('admin/listbreeders', 'UserController@updateDataProfile');
+
+		Route::post('admin/listbirds', 'UserController@updateDataProfile');
 
 		Route::get('admin/areas', array('as' => 'breeders.areas', function() {
 			return view('sb-admin.areas')

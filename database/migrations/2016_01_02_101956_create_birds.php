@@ -22,8 +22,10 @@ class CreateBirds extends Migration
             $table->integer('id_madre');
             $table->integer('id_cage');
             $table->integer('date_born');
+            $table->integer('date_died');
             $table->integer('date_sale');
             $table->longText('note');
+            $table->integer('last_modified');
             $table->timestamps();
         });
     }

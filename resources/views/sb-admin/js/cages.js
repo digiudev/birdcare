@@ -3,7 +3,7 @@ var dataTableLabel;
 var areas;
 var list;
 
-EditorZone = {
+EditorCage = {
 
     hiddeTopMenu: function(){
         jQuery('.sidebar').css('z-index', 0);
@@ -16,7 +16,7 @@ EditorZone = {
             fields: [{
                 label: "Cage name:",
                 name: "name"
-            },
+            }/*,
                 {
                     label: "Area:",
                     name: "id_area",
@@ -30,7 +30,7 @@ EditorZone = {
                     type: "select",
                     options: list,
                     "default": selected
-                }
+                }*/
             ]
         });
 
@@ -46,9 +46,9 @@ EditorZone = {
             ],
             select: true,
             buttons: [
-                {extend: "create", editor: editor_zones, text: dataTableLabel.newRecord},
-                {extend: "edit", editor: editor_zones, text: dataTableLabel.editRecord},
-                {extend: "remove", editor: editor_zones, text: dataTableLabel.deleteRecord}
+                {extend: "create", editor: editor_cages, text: dataTableLabel.newRecord},
+                {extend: "edit", editor: editor_cages, text: dataTableLabel.editRecord},
+                {extend: "remove", editor: editor_cages, text: dataTableLabel.deleteRecord}
             ],
             responsive: true,
             language: {
@@ -74,7 +74,8 @@ EditorZone = {
             url: "/admin/getjsonarea",
             dataType: "json",
             success: function (data) {
-                EditorZone.compileEditor(data);
+                console.log(data);
+                EditorCage.compileEditor(data);
             },
             error: function () {
                 $('#notification-bar').text('An error occurred');
@@ -85,8 +86,8 @@ EditorZone = {
 
 $(document).ready(function () {
 
-    EditorZone.hiddeTopMenu();
-    EditorZone.getStateList();
+    EditorCage.hiddeTopMenu();
+    EditorCage.getStateList();
 
     $(function () {
         $.ajaxSetup({

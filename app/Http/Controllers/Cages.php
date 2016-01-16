@@ -38,9 +38,9 @@ class Cages extends Controller
             $valid = $this->validateData($dati, $rules);
             if($valid!==true) return $valid;
 
-            $id = DB::table('areas')->insertGetId(['name' => $dati['name'], 'id_user'=>$user['id']]);
+            $id = DB::table('cages')->insertGetId(['cage_name' => $dati['name'], 'id_user'=>$user['id']]);
             // Se tutto ok inserisco
-            $ret['data'][] = ['name' => $dati['name'], 'DT_RowId' =>   "row_".$id];
+            $ret['data'][] = ['name' => $dati['name'], 'area_name' => '','position_name' => '','DT_RowId' =>   "row_".$id];
 
             return json_encode($ret);
         }
@@ -74,7 +74,7 @@ class Cages extends Controller
             $ret = [];
             foreach($_POST['data'] as $k=>$area) {
 
-                DB::table('areas')
+                DB::table('cages')
                     ->where('id', (int)str_replace('row_', '', $k))
                     ->delete();
 

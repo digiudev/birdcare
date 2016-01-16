@@ -264,19 +264,19 @@
                             <a href="{{ url ('admin/listbreeders') }}"><i class="fa fa-users  fa-fw"></i> {{ trans('breeders.title') }}</a>
                         </li>
                         <li {{ (Request::is('admin/listbirds') ? 'class="active"' : '') }}>
-                            <a href="{{ url ('admin/listbirds') }}"><i class="fa fa-users  fa-fw"></i> {{ trans('birds.title') }}</a>
+                            <a href="{{ url ('admin/listbirds') }}"><i class="fa fa-venus-mars  fa-fw"></i> {{ trans('birds.title') }}</a>
                         </li>
                         <li {{ (Request::is('admin/cages') ? 'class="active"' : '') }}>
-                            <a href="{{ url ('admin/cages') }}"><i class="fa fa-users  fa-fw"></i> {{ trans('cages.title') }}</a>
+                            <a href="{{ url ('admin/cages') }}"><i class="fa fa-bank  fa-fw"></i> {{ trans('cages.title') }}</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Areas<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-object-group fa-fw"></i> Areas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li {{ (Request::is('admin/areas') ? 'class="active"' : '') }}>
-                                    <a href="{{ url ('admin/areas') }}"><i class="fa fa-users  fa-fw"></i> {{ trans('areas.title') }}</a>
+                                    <a href="{{ url ('admin/areas') }}"><i class="fa fa-object-ungroup  fa-fw"></i> {{ trans('areas.title') }}</a>
                                 </li>
                                 <li {{ (Request::is('admin/zones') ? 'class="active"' : '') }}>
-                                    <a href="{{ url ('admin/zones') }}"><i class="fa fa-users  fa-fw"></i> {{ trans('zones.title') }}</a>
+                                    <a href="{{ url ('admin/zones') }}"><i class="fa fa-object-group  fa-fw"></i> {{ trans('zones.title') }}</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

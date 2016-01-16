@@ -27,7 +27,8 @@
     <link rel="stylesheet" href="{{ URL::asset(SBADMIN.'bower_components/morrisjs/morris.css') }}">
 
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="{{ URL::asset(SBADMIN.'bower_components/font-awesome/css/font-awesome.min.css') }}">
+   {{-- <link rel="stylesheet" href="{{ URL::asset(SBADMIN.'bower_components/font-awesome/css/font-awesome.min.css') }}">--}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>

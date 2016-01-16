@@ -9,28 +9,26 @@ EditorCage = {
         jQuery('.sidebar').css('z-index', 0);
     },
 
-    compileEditor: function (list, selected) {
+    compileEditor: function (areas, positions) {
         editor_cages = new $.fn.dataTable.Editor({
             ajax: "/admin/editcages",
             table: "#tbl_cages",
             fields: [{
                 label: "Cage name:",
                 name: "name"
-            }/*,
+            },
                 {
                     label: "Area:",
                     name: "id_area",
                     type: "select",
-                    options: list,
-                    "default": selected
+                    options: areas
                 },
                 {
                     label: "Zone:",
                     name: "id_position",
                     type: "select",
-                    options: list,
-                    "default": selected
-                }*/
+                    options: positions
+                }
             ]
         });
 
@@ -71,11 +69,11 @@ EditorCage = {
     getStateList: function () {
 
         $.ajax({
-            url: "/admin/getjsonarea",
+            url: "/admin/getjsonposition",
             dataType: "json",
             success: function (data) {
                 console.log(data);
-                EditorCage.compileEditor(data);
+                EditorCage.compileEditor(data['areas'], data['positions']);
             },
             error: function () {
                 $('#notification-bar').text('An error occurred');

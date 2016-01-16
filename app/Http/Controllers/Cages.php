@@ -38,9 +38,21 @@ class Cages extends Controller
             $valid = $this->validateData($dati, $rules);
             if($valid!==true) return $valid;
 
-            $id = DB::table('cages')->insertGetId(['cage_name' => $dati['name'], 'id_user'=>$user['id']]);
+            $dataInsert = [
+                'cage_name' => $dati['name'],
+                'id_user' => $user['id'],
+                'id_position' => (int)$dati['id_position']
+            ];
+            $id = DB::table('cages')->insertGetId($dataInsert);
+
+            $posizione = app('App\Http\Controllers\Positions')->getAllDataByPositionID($dati['id_position']);
             // Se tutto ok inserisco
-            $ret['data'][] = ['name' => $dati['name'], 'area_name' => '','position_name' => '','DT_RowId' =>   "row_".$id];
+            $ret['data'][] = [
+                'name' => $dati['name'],
+                'area_name' => $posizione['area']['name'],
+                'position_name' => $posizione['position']['name'],
+                'DT_RowId' =>   "row_".$id
+            ];
 
             return json_encode($ret);
         }
@@ -59,12 +71,20 @@ class Cages extends Controller
                 $id = (int)str_replace('row_', '', $k);
 
                 // Se tutto ok modifico
-                DB::table('areas')
+                DB::table('cages')
                     ->where('id', $id)
-                    ->update(['name' => $area['name']]);
+                    ->update([
+                        'cage_name' => $area['name'],
+                        'id_position' => $area['id_position'],
+                    ]);
 
-                $row = ['DT_RowId' => "row_".$id, 'name' => $area['name']];
-                $ret['data'][] = $row;
+                $posizione = app('App\Http\Controllers\Positions')->getAllDataByPositionID($area['id_position']);
+                $ret['data'][] = [
+                    'name' => $area['name'],
+                    'area_name' => $posizione['area']['name'],
+                    'position_name' => $posizione['position']['name'],
+                    'DT_RowId' =>   "row_".$id
+                ];
             }
 
             return json_encode($ret);
@@ -107,22 +127,14 @@ class Cages extends Controller
         $list = [];
         foreach($lists as $cage)
         {
-            $nomePosizione = $nomeArea = '';
-            if($cage->id_position>0) {
-                $posizione = app('App\Http\Controllers\Positions')->getPositionByID($cage->id_position);
-                if($posizione!==null)
-                {
-                    $nomePosizione = $posizione->name;
-                    $area = app('App\Http\Controllers\Positions')->getAreaByID($posizione->id_area);
-                    $nomeArea = $area->name;
-                }
-
-            }
+            $posizione = app('App\Http\Controllers\Positions')->getAllDataByPositionID($cage->id_position);
             $new = [];
             $new['DT_RowId'] = "row_".$cage->id;
             $new['name'] = $cage->cage_name;
-            $new['area_name'] = $nomeArea;
-            $new['position_name'] = $nomePosizione;
+            $new['id_area'] = $posizione['area']['id'];
+            $new['area_name'] = $posizione['area']['name'];
+            $new['id_position'] = $posizione['position']['id'];
+            $new['position_name'] = $posizione['position']['name'];
             $list['data'][] = $new;
         }
         return json_encode($list);

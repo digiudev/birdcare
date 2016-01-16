@@ -149,6 +149,8 @@ Route::get('/admin/editcages', 'Cages@getJsonCages');
 
 Route::get('/admin/getjsonarea', 'Positions@getJsonAreasForInsert');
 
+Route::get('/admin/getjsonposition', 'Positions@getJsonPositionForInsert');
+
 Route::post('/admin/mylocation', 'MyLocation@myLocation');
 
 Route::get('admin/charts', function()

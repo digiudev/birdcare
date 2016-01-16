@@ -21,6 +21,12 @@ class Positions extends Controller
         return DB::table('areas')->where('id_user', (int)$user['id'])->get();
     }
 
+    public function getListOfPosition()
+    {
+        $user = Auth::user()->getAttributes();
+        return DB::table('positions')->where('id_user', (int)$user['id'])->get();
+    }
+
     public function editAreas()
     {
         // Costruisco i campi richiesti
@@ -221,7 +227,7 @@ class Positions extends Controller
         return json_encode($list);
     }
 
-    public function getJsonAreasForInsert(){
+    public function getJsonAreasForInsert($json = true){
 
         $lists = $this->getListOfArea();
 
@@ -233,6 +239,59 @@ class Positions extends Controller
             $new['value'] = $area->id;
             $list[] = $new;
         }
-        return json_encode($list);
+
+        // inserisco ance il record vuoto
+        $list[] = ['label'=>'- Seleziona -', 'value' => 0];
+        if($json)
+            return json_encode($list);
+        return $list;
+    }
+
+    public function getJsonPositionForInsert($json = true){
+
+        $lists = $this->getListOfPosition();
+
+        $list = [];
+        $list['areas'] = $this->getJsonAreasForInsert(false);
+
+        foreach($lists as $position)
+        {
+            $new = [];
+            $new['label'] = $position->name;
+            $new['value'] = $position->id;
+            $list['positions'][] = $new;
+        }
+
+        // inserisco ance il record vuoto
+        $list['positions'][] = ['label'=>'- Seleziona -', 'value' => 0];
+
+        if($json)
+            return json_encode($list);
+        return $list;
+    }
+
+    public function getAllDataByPositionID($idPosition)
+    {
+        $ret = [];
+
+        if($idPosition>0) {
+            $posizione = app('App\Http\Controllers\Positions')->getPositionByID((int)$idPosition);
+            if($posizione!==null)
+            {
+                $ret['position']['id'] = $posizione->id;
+                $ret['position']['name'] = $posizione->name;
+                $area = app('App\Http\Controllers\Positions')->getAreaByID($posizione->id_area);
+                $ret['area']['id'] = $area->id;
+                $ret['area']['name'] = $area->name;
+            }
+        }
+
+        if(sizeof($ret)==0) {
+            $ret['position']['id'] = 0;
+            $ret['position']['name'] = '';
+            $ret['area']['id'] = 0;
+            $ret['area']['name'] = '';
+        }
+        return $ret;
     }
 }

@@ -85,3 +85,7 @@ tr.shown td.details-control:before {
     position:absolute;
     cursor: pointer;
 }
+
+.dataTable_extra td{
+    padding: 5px;
+}

@@ -10,5 +10,7 @@ return [
     'col_madre' => 'Madre',
     'col_genitori' => 'Genitori',
     'col_cage' => 'Gabbia',
-    'col_dateborn' => 'Data di nascita'
+    'col_date_born' => 'Data di nascita',
+    'col_date_sale' => 'Data di vendita',
+    'col_note' => 'Note',
 ];

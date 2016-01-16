@@ -22,8 +22,7 @@ $(document).ready(function () {
             {"data": "sex"},
             {"data": "genere_specie"},
             {"data": "rna_padre_madre"},
-            {"data": "cage_name"},
-            {"data": "date_born"}
+            {"data": "cage_name"}
         ],
         "language": {
             "lengthMenu": dataTableLabel.lengthMenu,
@@ -82,13 +81,13 @@ $(document).ready(function () {
  */
 function format(data) {
 
-    var string = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+    var string = '<table class="dataTable_extra">';
     var fields = [
-                    ['Padre', data.rna_padre],
-                    ['Madre', data.rna_madre],
-                    ['Date Born', data.date_born],
-                    ['Date Sale', data.date_sale],
-                    ['Note', data.note]
+                    [data.fields_name.col_padre, data.rna_padre],
+                    [data.fields_name.col_madre, data.rna_madre],
+                    [data.fields_name.col_date_born, data.date_born],
+                    [data.fields_name.col_date_sale, data.date_sale],
+                    [data.fields_name.col_note, data.note]
                 ];
 
     return string + getDataExtra(fields) + '</table>';

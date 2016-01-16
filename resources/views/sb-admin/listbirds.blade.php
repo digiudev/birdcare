@@ -23,7 +23,6 @@
                                     <th>{{ trans('birds.col_specie')}}</th>
                                     <th>{{ trans('birds.col_genitori')}}</th>
                                     <th>{{ trans('birds.col_cage')}}</th>
-                                    <th>{{ trans('birds.col_dateborn')}}</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
@@ -34,7 +33,6 @@
                                     <th>{{ trans('birds.col_specie')}}</th>
                                     <th>{{ trans('birds.col_genitori')}}</th>
                                     <th>{{ trans('birds.col_cage')}}</th>
-                                    <th>{{ trans('birds.col_dateborn')}}</th>
                                 </tr>
                                 </tfoot>
                             </table>

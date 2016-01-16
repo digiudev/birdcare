@@ -64,6 +64,14 @@ class Birds extends Controller
             $new['date_born'] = $bird->date_born;
             $new['date_sale'] = $bird->date_sale;
             $new['note'] = $bird->note;
+
+            $new['fields_name'] = [
+                'col_padre' => Lang::get('birds.col_padre'),
+                'col_madre' => Lang::get('birds.col_madre'),
+                'col_date_born' => Lang::get('birds.col_date_born'),
+                'col_date_sale' => Lang::get('birds.col_date_sale'),
+                'col_note' => Lang::get('birds.col_note'),
+            ];
             $list['data'][] = $new;
         }
         return json_encode($list);

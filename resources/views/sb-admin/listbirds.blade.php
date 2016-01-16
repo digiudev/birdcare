@@ -19,6 +19,7 @@
                             <table class="table table-bordered table-hover order-column" id="dataTables-birds" data-order="[[ 5, &quot;asc&quot; ]]" width="100%">
                                 <thead>
                                 <tr>
+                                    <th></th>
                                     <th>{{ trans('birds.col_rna')}}</th>
                                     <th>{{ trans('birds.col_sex')}}</th>
                                     <th>{{ trans('birds.col_specie')}}</th>
@@ -30,6 +31,7 @@
                                 </thead>
                                 <tfoot>
                                 <tr>
+                                    <th></th>
                                     <th>{{ trans('birds.col_rna')}}</th>
                                     <th>{{ trans('birds.col_sex')}}</th>
                                     <th>{{ trans('birds.col_specie')}}</th>
@@ -43,6 +45,7 @@
 
                                     @foreach ($list as $birds)
                                         <tr>
+                                            <td class="details-control"></td>
                                         <td>{{$birds->number}}</td>
                                         <td>{{$birds->sex}}</td>
                                             <td>

@@ -60,3 +60,27 @@
 tfoot {
     display: table-header-group;
 }
+
+td.details-control {
+    padding-left: 32px;
+    position: relative;
+
+}
+td.details-control:before {
+    content: "\f067";
+    font-family: 'FontAwesome';
+    left:5px;
+    position:absolute;
+    cursor: pointer;
+}
+tr.shown td.details-control{
+    padding-left: 50px;
+    position: relative;
+}
+tr.shown td.details-control:before {
+    content: "\f068";
+    font-family: 'FontAwesome';
+    left:5px;
+    position:absolute;
+    cursor: pointer;
+}

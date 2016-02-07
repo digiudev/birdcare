@@ -78,6 +78,8 @@ return [
     'name'                 => 'Il campo :attribute è obbligatorio.',
     'rna'                  => 'Il campo :attribute è obbligatorio.',
     'country'              => 'Il campo :attribute è obbligatorio.',
+    'number'               => 'Il campo :attribute è obbligatorio.',
+    'sex'                  => 'Il campo :attribute è obbligatorio.',
 
     /*
     |--------------------------------------------------------------------------

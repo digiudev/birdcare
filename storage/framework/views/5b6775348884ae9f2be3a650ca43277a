@@ -34,6 +34,9 @@
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav">
 					<li><a href="<?php echo e(url('/')); ?>"><?php echo e(trans('pagination.title_welcome')); ?></a></li>
+					<?php if(!auth()->guest()): ?>
+					<li><a href="<?php echo e(url('/admin')); ?>"><?php echo e(trans('pagination.title_admin')); ?></a></li>
+					<?php endif; ?>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<?php foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties): ?>

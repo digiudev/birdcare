@@ -6,8 +6,10 @@ $(document).ready(function () {
     $('#dataTables-birds tfoot th').each(function () {
         var title = $(this).text();
         if (title != '')
-            $(this).html('<input type="text" placeholder=" '+ dataTableLabel.search +' ' + title + '" />');
+            $(this).html('<input type="text" style="width: 100%" placeholder="'+ dataTableLabel.search +' ' + title + '" />');
     });
+
+
 
     var table = $('#dataTables-birds').DataTable({
         "ajax": "/admin/getListBirds",
@@ -18,6 +20,7 @@ $(document).ready(function () {
                 "data":           null,
                 "defaultContent": ''
             },
+            {"data": "image"},
             {"data": "number"},
             {"data": "sex"},
             {"data": "genere_specie"},
@@ -71,6 +74,86 @@ $(document).ready(function () {
             tr.addClass('shown');
         }
     });
+
+    $('#dataTables-birds tbody').on( 'click', 'tr', function () {
+        $(this).toggleClass('selected');
+        var numberOfSelected = table.rows('.selected').data().length;
+
+        var buttonEdit = $('#button-edit');
+        var buttonCouple = $('#button-couple');
+        var buttonDelete = $('#button-delete');
+        if(numberOfSelected>0)
+            buttonDelete.removeClass('disabled');
+        else
+            buttonDelete.addClass('disabled');
+
+        if(numberOfSelected==1)
+        {
+            buttonEdit.removeClass('disabled');
+            buttonCouple.addClass('disabled');
+            buttonEdit.attr("href", '/admin/editbird?id='+$(this).data("id"));
+        }
+        else
+        {
+            buttonEdit.addClass('disabled');
+            buttonCouple.addClass('disabled');
+            buttonEdit.removeAttr("href");
+        }
+
+        if(numberOfSelected==2) {
+
+            buttonEdit.attr("href", '/admin/editbird?id='+$(this).data("id"));
+            var couple = [];
+            var selezionati = [];
+            var i = 0;
+            $('#dataTables-birds > tbody  > tr.selected').each(function() {
+                selezionati[i] = $(this).data("id");
+                couple[i] = $(this).data("sex");
+                i = i+1;
+            });
+            if((couple[0]=='M' && couple[1] == 'F') || (couple[0]=='F' && couple[1] == 'M')) {
+                buttonCouple.removeClass('disabled');
+                buttonCouple.attr("href", '/admin/editbird?'+couple[0]+'='+selezionati[0]+'&'+couple[1]+'='+selezionati[1]);
+            }
+        }
+    } );
+
+    $('#button-delete').on('click', function(){
+        var selezionati = [];
+        var i = 0;
+        var object_selected =  $('#dataTables-birds > tbody  > tr.selected');
+        object_selected.each(function() {
+            selezionati.push($(this).data("id"));
+        });
+
+        var size = selezionati.length;
+        if(size>0)
+        {
+            $.confirm({
+                title: 'Delete!',
+                content: 'Are you sure cancelled '+ size +' record?',
+                confirm: function(){
+                    $.ajax({
+                        url: '/admin/deleteBirds',
+                        data: {birds: selezionati},
+                        type: "POST",
+                        success: function(){
+                            object_selected.each(function() {
+                                $(this).hide();
+                            });
+                        },
+                        error: function(){
+                            $.alert('failure');
+                        }
+                    });
+                },
+                cancel: function(){
+                  //  $.alert('Canceled!')
+                }
+            });
+        }
+
+    });
 });
 
 /**
@@ -117,3 +200,13 @@ function getDataExtra(dati)
 
     return string;
 }
+
+$(document).ready(function () {
+    $(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('#_token').val()
+            }
+        });
+    });
+});

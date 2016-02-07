@@ -62,6 +62,35 @@ Route::group(
 				->with(app('App\Http\Controllers\UserController')->editProfile());
 		}));
 
+		Route::get('admin/editbird', array('as' => 'birds.update', function() {
+
+			$controller = app('App\Http\Controllers\Birds');
+			$mum = $dad = '';
+			if(isset($_GET['F']))
+				$mum = $controller->getParent($_GET['F']);
+			if(isset($_GET['M']))
+				$dad = $controller->getParent($_GET['M']);
+			if(!isset($_GET['id']))
+				return view('sb-admin.editbird')
+					->with([
+						'specie' => $controller->selectSpecie(),
+						'cages' => $controller->selectCages(),
+						'validator' => $controller->getValidatorJS(),
+						'mum' => $mum,
+						'dad' => $dad
+					]);
+			return view('sb-admin.editbird')
+				->with([
+					'bird' => $controller->getBird($_GET['id']),
+					'cages' => $controller->selectCages(),
+					'validator' => $controller->getValidatorJS(),
+					'mum' => $mum,
+					'dad' => $dad
+				]);
+		}));
+
+		Route::post('admin/editbird', array('as' => 'birds.create', 'uses' => 'Birds@updateBird'));
+
 		// In POST vengono passati tutti i dati del form che vengono poi girati al validator
 		Route::post('admin/userprofile', 'UserController@updateDataProfile');
 
@@ -132,7 +161,6 @@ Route::group(
 		}));
 
 		Route::get('/admin/getListBirds', 'Birds@getJsonListUserBirds');
-
 	});
 
 Route::post('/admin/editareas', 'Positions@editAreas');
@@ -152,6 +180,12 @@ Route::get('/admin/getjsonarea', 'Positions@getJsonAreasForInsert');
 Route::get('/admin/getjsonposition', 'Positions@getJsonPositionForInsert');
 
 Route::post('/admin/mylocation', 'MyLocation@myLocation');
+
+Route::get('/admin/getlistrna', 'Birds@getListRNAByUser');
+
+Route::get('/admin/getjsonspecie', 'Birds@getListJSONSpecie');
+
+Route::post('/admin/deleteBirds', 'Birds@deleteBirds');
 
 Route::get('admin/charts', function()
 {

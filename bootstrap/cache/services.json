@@ -32,7 +32,8 @@
         "Bestmomo\\Scafold\\ScafoldServiceProvider",
         "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
         "Laravel\\Socialite\\SocialiteServiceProvider",
-        "Proengsoft\\JsValidation\\JsValidationServiceProvider"
+        "Proengsoft\\JsValidation\\JsValidationServiceProvider",
+        "Intervention\\Image\\ImageServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -52,7 +53,8 @@
         "App\\Providers\\RouteServiceProvider",
         "Bestmomo\\Scafold\\ScafoldServiceProvider",
         "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
-        "Proengsoft\\JsValidation\\JsValidationServiceProvider"
+        "Proengsoft\\JsValidation\\JsValidationServiceProvider",
+        "Intervention\\Image\\ImageServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

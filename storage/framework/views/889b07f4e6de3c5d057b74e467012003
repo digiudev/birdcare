@@ -10,12 +10,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo e(url ('')); ?>">SB Admin v2.0 | Laravel 5</a>
+                <a class="navbar-brand" href="<?php echo e(url ('')); ?>"><?php echo e(trans('admin.header_title')); ?></a>
             </div>
             <!-- /.navbar-header -->
-
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-language"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <?php foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties): ?>
+                            <li>
+                                <a rel="alternate" hreflang="<?php echo e($localeCode); ?>" href="<?php echo e(LaravelLocalization::getLocalizedURL($localeCode)); ?>">
+                                    <?php echo e($properties['native']); ?>
+
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+                <?php /*<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
@@ -207,19 +221,19 @@
                         </li>
                     </ul>
                     <!-- /.dropdown-alerts -->
-                </li>
+                </li>*/ ?>
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="/admin/settings"><i class="fa fa-user fa-fw"></i> <?php echo e(trans('admin.menu_settings')); ?></a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="/admin/userprofile"><i class="fa fa-gear fa-fw"></i> <?php echo e(trans('admin.menu_user_profile')); ?></a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo e(url ('login')); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="/auth/logout"><i class="fa fa-sign-out fa-fw"></i> <?php echo e(trans('admin.menu_logout')); ?></a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -233,7 +247,7 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="<?php echo e(trans('admin.search_placeholder')); ?>">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
@@ -243,9 +257,30 @@
                             <!-- /input-group -->
                         </li>
                         <li <?php echo e((Request::is('admin/') ? 'class="active"' : '')); ?>>
-                            <a href="<?php echo e(url ('admin/')); ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="<?php echo e(url ('admin/')); ?>"><i class="fa fa-dashboard fa-fw"></i> <?php echo e(trans('admin.dashboard')); ?></a>
                         </li>
-                        <li <?php echo e((Request::is('*charts') ? 'class="active"' : '')); ?>>
+                        <li <?php echo e((Request::is('admin/listbreeders') ? 'class="active"' : '')); ?>>
+                            <a href="<?php echo e(url ('admin/listbreeders')); ?>"><i class="fa fa-users  fa-fw"></i> <?php echo e(trans('breeders.title')); ?></a>
+                        </li>
+                        <li <?php echo e((Request::is('admin/listbirds') ? 'class="active"' : '')); ?>>
+                            <a href="<?php echo e(url ('admin/listbirds')); ?>"><i class="fa fa-venus-mars  fa-fw"></i> <?php echo e(trans('birds.title')); ?></a>
+                        </li>
+                        <li <?php echo e((Request::is('admin/cages') ? 'class="active"' : '')); ?>>
+                            <a href="<?php echo e(url ('admin/cages')); ?>"><i class="fa fa-bank  fa-fw"></i> <?php echo e(trans('cages.title')); ?></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-object-group fa-fw"></i> Areas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li <?php echo e((Request::is('admin/areas') ? 'class="active"' : '')); ?>>
+                                    <a href="<?php echo e(url ('admin/areas')); ?>"><i class="fa fa-object-ungroup  fa-fw"></i> <?php echo e(trans('areas.title')); ?></a>
+                                </li>
+                                <li <?php echo e((Request::is('admin/zones') ? 'class="active"' : '')); ?>>
+                                    <a href="<?php echo e(url ('admin/zones')); ?>"><i class="fa fa-object-group  fa-fw"></i> <?php echo e(trans('zones.title')); ?></a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <?php /*<li <?php echo e((Request::is('*charts') ? 'class="active"' : '')); ?>>
                             <a href="<?php echo e(url ('admin/charts')); ?>"><i class="fa fa-bar-chart-o fa-fw"></i> Charts</a>
                             <!-- /.nav-second-level -->
                         </li>
@@ -324,6 +359,7 @@
                         <li <?php echo e((Request::is('*documentation') ? 'class="active"' : '')); ?>>
                             <a href="<?php echo e(url ('documentation')); ?>"><i class="fa fa-file-word-o fa-fw"></i> Documentation</a>
                         </li>
+                    </ul>*/ ?>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

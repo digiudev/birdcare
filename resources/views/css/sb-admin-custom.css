@@ -89,3 +89,23 @@ tr.shown td.details-control:before {
 .dataTable_extra td{
     padding: 5px;
 }
+
+.ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    margin: .8em 0 .2em;
+    line-height: 1.5;
+}
+
+.image-bird-edit{
+    max-width:150px;
+    max-height: 150px;
+}
+.upload-image-edit-bird{
+    padding: 0 0 25px 0;
+    border-bottom: 1px solid #EEE;
+}
+
+.img-list-birds{
+    max-width:60px;
+}

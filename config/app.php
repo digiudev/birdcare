@@ -154,11 +154,10 @@ return [
         // Socialize
         Laravel\Socialite\SocialiteServiceProvider::class,
         Proengsoft\JsValidation\JsValidationServiceProvider::class,
-
-       // Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class
     ],
 
-    /*
+    /*ll
     |--------------------------------------------------------------------------
     | Class Aliases
     |--------------------------------------------------------------------------
@@ -209,8 +208,8 @@ return [
         'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Html2'      => Illuminate\Html\HtmlServiceProvider::class,
-        'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class
-       // 'Image' => Intervention\Image\Facades\Image::class
+        'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class
     ],
 
 ];

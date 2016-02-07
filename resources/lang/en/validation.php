@@ -78,7 +78,8 @@ return [
     'name'                 => 'The :attribute is required.',
     'rna'                  => 'The :attribute is required.',
     'country'              => 'The :attribute is required.',
-
+    'number'                  => 'The :attribute is required.',
+    'sex'              => 'The :attribute is required.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

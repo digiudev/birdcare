@@ -76,4 +76,5 @@ class Birds extends Controller
         }
         return json_encode($list);
     }
+	public function prova(){}
 }
